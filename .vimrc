@@ -33,6 +33,9 @@ set expandtab
 
 nnoremap Y y$
 vnoremap P "_dP
+nnoremap n nzz
+nnoremap N Nzz
+
 set guifont=Ubuntu_Mono:h14:cANSI:qDRAFT
 set colorcolumn=80,120
 
