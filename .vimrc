@@ -33,6 +33,9 @@ set expandtab
 
 nnoremap Y y$
 vnoremap P "_dP
+set guifont=Ubuntu_Mono:h14:cANSI:qDRAFT
+set colorcolumn=80,120
+
 " neovim remap test
 nnoremap <C-L> <Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>
 inoremap <C-U> <C-G>u<C-U>
@@ -40,5 +43,4 @@ inoremap <C-W> <C-G>u<C-W>
 xnoremap * y/\V<C-R>"<CR>
 xnoremap # y?\V<C-R>"<CR>
 nnoremap & :&&<CR>
-set guifont=Consolas:h14:cANSI:qDRAFT
-set colorcolumn=80,120
+
