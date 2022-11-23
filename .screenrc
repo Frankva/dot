@@ -1,2 +1,4 @@
 startup_message off
-hardstatus alwaysfirstline "%w"
+hardstatus alwaysfirstline "%w%=%Y/%m/%d %c:%s"
+deflogin on
+autodetach on
