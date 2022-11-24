@@ -184,5 +184,7 @@
 # }
 #
 # alias cd=cd_func
+
 set -o vi
+bind 'set show-mode-in-prompt on'
 alias ll='ls -alFh'
