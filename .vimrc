@@ -32,6 +32,18 @@ set softtabstop=4
 set expandtab
 set hidden
 set ls=2
+set autoread
+set nolrm
+set mouse=nvi
+set mousem="popup_setpos"
+set nf="bin,hex"
+set ssop="blank,buffers,curdir,folds,help,tabpages,winsize,terminal"
+set nosol
+set tags="./tags;,tags"
+set tf
+set wmnu
+set wop="pum,tagfile"
+
 
 nnoremap Y y$
 vnoremap P "_dP
