@@ -30,6 +30,7 @@ colorscheme desert
 set shiftwidth=4
 set softtabstop=4
 set expandtab
+set hidden
 
 nnoremap Y y$
 vnoremap P "_dP
