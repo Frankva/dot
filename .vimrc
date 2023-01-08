@@ -66,7 +66,7 @@ nnoremap & :&&<CR>
 " let @y=":let @+=@\"\n"
 nnoremap <leader>y <Cmd>let @+=@"<Cr>
 nnoremap <leader>Y <Cmd>let @"=@+<Cr>
-nnoremap <leader><leader>Y <Cmd>let @"=@+<Cr>
+
 
 
 map <Space> <Leader>
