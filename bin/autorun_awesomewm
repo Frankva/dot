@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+xrandr --output DP-1-1 --auto --left-of HDMI-0
+nohup blueman-applet &
+nohup nm-applet  &
+nohup pnmixer &
+xinput set-prop 11 355 -0.6
+setxkbmap us qwerty-fr
