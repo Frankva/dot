@@ -369,7 +369,7 @@ globalkeys = gears.table.join(
       os.execute("nohup xfce4-screenshooter -f -o gimp &")
     end),
     awful.key({ modkey }, "l", function()
-      os.execute("nohup i3lock &")
+      os.execute("nohup i3lock -c 000000 &")
     end)
 )
 
