@@ -63,4 +63,5 @@ xnoremap * y/\V<C-R>"<CR>
 xnoremap # y?\V<C-R>"<CR>
 nnoremap & :&&<CR>
 
-let @y=":let @+=@\"\n"
+" let @y=":let @+=@\"\n"
+nnoremap <leader>y <Cmd>let @+=@"<Cr>
