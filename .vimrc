@@ -52,7 +52,7 @@ nnoremap N Nzz
 nnoremap <C-U> <C-U>zz
 nnoremap <C-D> <C-D>zz
 
-set guifont=Ubuntu_Mono:h14:cANSI:qDRAFT
+" set guifont=Ubuntu_Mono:h14:cANSI:qDRAFT
 set colorcolumn=80,120
 
 " neovim remap test
