@@ -1,0 +1,2 @@
+#!/usr/bin/bash
+xfce4-screenshooter -f -s "$HOME/Bureau/Capture d’écran $(date "+%Y-%m-%d à %H.%M.%S").png"
