@@ -46,7 +46,7 @@ set wop="pum,tagfile"
 
 
 nnoremap Y y$
-vnoremap P "_dP
+" vnoremap P "_dP
 nnoremap n nzz
 nnoremap N Nzz
 nnoremap <C-U> <C-U>zz
