@@ -70,3 +70,4 @@ nnoremap <leader>Y <Cmd>let @"=@+<Cr>
 
 
 map <Space> <Leader>
+" set shell=C:\Program\ Files\Git\bin\bash
