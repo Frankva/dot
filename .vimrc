@@ -26,9 +26,10 @@ filetype indent on      " load indent file for specific file type
 set t_RV=               " http://bugs.debian.org/608242, http://groups.google.com/group/vim_dev/browse_thread/thread/9770ea844cec3282
 
 set rnu
-colorscheme desert
+" colorscheme desert
 set shiftwidth=4
 set softtabstop=4
+set tabstop=4 " set ts=4
 set expandtab
 set hidden
 set ls=2
@@ -39,7 +40,8 @@ set mousem="popup_setpos"
 set nf="bin,hex"
 set ssop="blank,buffers,curdir,folds,help,tabpages,winsize,terminal"
 set nosol
-set tags="./tags;,tags"
+" set tags="./tags;,tags"
+set tags=tags
 set tf
 set wmnu
 set wop="pum,tagfile"
@@ -75,13 +77,14 @@ nnoremap <leader>Y <Cmd>let @"=@+<Cr>
 map <Space> <Leader>
 " set shell=C:\Program\ Files\Git\bin\bash
 
-let g:netrw_keepdir = 0
+" let g:netrw_keepdir = 0
 let g:netrw_localcopydircmd = 'cp -r'
 
 let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
+
+" let g:netrw_liststyle = 3
+" let g:netrw_browse_split = 4
+" let g:netrw_altv = 1
 " let g:netrw_winsize = 25
 " augroup ProjectDrawer
 "   autocmd!
@@ -91,4 +94,6 @@ let g:netrw_altv = 1
 " for vs code with extension vim
 inoremap <C-j> <CR>
 
-
+set omnifunc=syntaxcomplete#Complete
+set noswapfile
+set nowrap
