@@ -20,13 +20,14 @@ set backspace=indent,eol,start  " make that backspace key work the way it should
 set runtimepath=$VIMRUNTIME     " turn off user scripts, https://github.com/igrigorik/vimgolf/issues/129
 
 syntax on               " turn syntax highlighting on by default
+" syntax enable               " turn syntax highlighting on by default
 filetype on             " detect type of file
 filetype indent on      " load indent file for specific file type
 
 set t_RV=               " http://bugs.debian.org/608242, http://groups.google.com/group/vim_dev/browse_thread/thread/9770ea844cec3282
 
 set rnu
-" colorscheme desert
+" colorscheme default
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4 " set ts=4
@@ -52,6 +53,7 @@ nnoremap Y y$
 " like neovim P, do not use on endline 
 vnoremap P "_dP
 
+" center when
 nnoremap n nzz
 nnoremap N Nzz
 nnoremap <C-U> <C-U>zz
@@ -69,15 +71,15 @@ xnoremap # y?\V<C-R>"<CR>
 nnoremap & :&&<CR>
 
 " let @y=":let @+=@\"\n"
-nnoremap <leader>y <Cmd>let @+=@"<Cr>
-nnoremap <leader>Y <Cmd>let @"=@+<Cr>
+" nnoremap <leader>y <Cmd>let @+=@"<Cr>
+" nnoremap <leader>Y <Cmd>let @"=@+<Cr>
 
 
 
-map <Space> <Leader>
+" map <Space> <Leader>
 " set shell=C:\Program\ Files\Git\bin\bash
 
-" let g:netrw_keepdir = 0
+let g:netrw_keepdir = 1
 let g:netrw_localcopydircmd = 'cp -r'
 
 let g:netrw_banner = 0
@@ -85,15 +87,31 @@ let g:netrw_banner = 0
 " let g:netrw_liststyle = 3
 " let g:netrw_browse_split = 4
 " let g:netrw_altv = 1
-" let g:netrw_winsize = 25
-" augroup ProjectDrawer
-"   autocmd!
-"   autocmd VimEnter * :Vexplore
-" augroup END
 
 " for vs code with extension vim
 inoremap <C-j> <CR>
 
-set omnifunc=syntaxcomplete#Complete
+" set omnifunc=syntaxcomplete#Complete
 set noswapfile
 set nowrap
+
+set cuc
+set cul
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+let &t_SR = "\e[4 q"
+
+set ttimeout
+set ttimeoutlen=1
+set ttyfast
+
+set keywordprg=zeal
+nnoremap K :!zeal "<cword>"&<CR><CR>
+" set keywordprg=xdg-open\ https://devdocs.io/\\#q=\
+" set keywordprg=start\ firefox\ https://devdocs.io/\\#q=\
+" nnoremap K :!start https://devdocs.io/\#q="<cword>"&<CR><CR>
+
+set title
+
+set spell spelllang=en_us
+set nospell
