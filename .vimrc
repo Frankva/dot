@@ -29,7 +29,7 @@ set rnu
 " colorscheme desert
 set shiftwidth=4
 set softtabstop=4
-set tabstop=4 " set ts=4
+set tabstop=4
 set expandtab
 set hidden
 set ls=2
@@ -40,7 +40,7 @@ set mousem="popup_setpos"
 set nf="bin,hex"
 set ssop="blank,buffers,curdir,folds,help,tabpages,winsize,terminal"
 set nosol
-" set tags="./tags;,tags"
+"set tags="./tags;,tags"
 set tags=tags
 set tf
 set wmnu
@@ -48,10 +48,7 @@ set wop="pum,tagfile"
 
 
 nnoremap Y y$
-
-" like neovim P, do not use on endline 
 vnoremap P "_dP
-
 nnoremap n nzz
 nnoremap N Nzz
 nnoremap <C-U> <C-U>zz
@@ -77,23 +74,54 @@ nnoremap <leader>Y <Cmd>let @"=@+<Cr>
 map <Space> <Leader>
 " set shell=C:\Program\ Files\Git\bin\bash
 
-" let g:netrw_keepdir = 0
+let g:netrw_keepdir = 1
 let g:netrw_localcopydircmd = 'cp -r'
-
 let g:netrw_banner = 0
 
-" let g:netrw_liststyle = 3
-" let g:netrw_browse_split = 4
-" let g:netrw_altv = 1
-" let g:netrw_winsize = 25
-" augroup ProjectDrawer
-"   autocmd!
-"   autocmd VimEnter * :Vexplore
-" augroup END
 
-" for vs code with extension vim
-inoremap <C-j> <CR>
+" let @l="yl\"\"h"
 
-set omnifunc=syntaxcomplete#Complete
+" let @j = "yj\"\"k"
+
+" let interpretor = "python3.11"
+" let @m = ":w
+:put%
+I".interpretor." ýaddl\"\"h"
+
+"command Makem execute "normal! :put%
+I".interpretor." ýaddl\"\"h"
+" command Makem  normal! :put%
+Ipython3.11 ýaddl\"1h
+
+" command Maket  normal! lN
+" command Maket execute  "normal! lila vie"
+" command Makema execute "normal! l:bd
+"
+
+set cul
+set cuc
+
+set kp=zeal
+nnoremap K :!nohup zeal "<cword>" &<CR><CR>
+" set kp=zeal\ python:\
+
+" cursor
+let &t_SI ="\e[5 q" "SI = INSERT mode
+let &t_SR ="\e[4 q" "SR = REPLACE mode
+let &t_EI ="\e[1 q" "EI = NORMAL mode (ELSE)
+
+set ttimeout
+set ttimeoutlen=1
+set ttyfast
+
+" python on :make
+set mp=python3.11\ %
+set efm=%m
+
 set noswapfile
 set nowrap
+
+" set foldenable
+" set foldmethod=indent
+" %foldopen!
+
