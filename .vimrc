@@ -27,9 +27,13 @@ set t_RV=               " http://bugs.debian.org/608242, http://groups.google.co
 
 set rnu
 " colorscheme desert
-set shiftwidth=4
-set softtabstop=4
+
+
+" just change ts when there is other size tab like JS is 2
 set tabstop=4 " set ts=4
+set shiftwidth=0
+set softtabstop=-1
+
 set expandtab
 set hidden
 set ls=2
@@ -58,6 +62,12 @@ nnoremap <C-U> <C-U>zz
 nnoremap <C-D> <C-D>zz
 
 " set guifont=Ubuntu_Mono:h14:cANSI:qDRAFT
+" ^l when not show ligature
+set guifont=Fira_code:h14:cANSI:qDRAFT
+set guiligatures=!\"#$%&()*+-./:<=>?@[]^_{\|~><
+set renderoptions=type:directx
+set encoding=utf-8
+
 set colorcolumn=80,120
 
 " neovim remap test
