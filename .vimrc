@@ -79,12 +79,19 @@ xnoremap # y?\V<C-R>"<CR>
 nnoremap & :&&<CR>
 
 " let @y=":let @+=@\"\n"
-nnoremap <leader>y <Cmd>let @+=@"<Cr>
-nnoremap <leader>Y <Cmd>let @"=@+<Cr>
+" nnoremap <leader>y <Cmd>let @+=@"<Cr>
+" nnoremap <leader>Y <Cmd>let @"=@+<Cr>
+nnoremap <Space>y "+y
+vnoremap <Space>y "+y
+nnoremap <Space>. <Cmd>Vex<Cr>/
+nnoremap <Space><Cr> <Cmd>vert ter<Cr>
+nnoremap <Space>j <cmd>lnext<CR>zz
+nnoremap <Space>k <cmd>lprev<CR>zz
 
 
 
-map <Space> <Leader>
+
+" map <Space> <Leader>
 " set shell=C:\Program\ Files\Git\bin\bash
 
 " let g:netrw_keepdir = 0
