@@ -31,4 +31,5 @@
 (setq evil-want-C-d-scroll t)
 (setq evil-want-C-i-jump nil)
 
+(blink-cursor-mode 0)
 
