@@ -1,0 +1,23 @@
+{
+	"name": "Vimium C",
+	"@time": "03/09/2023 13:48:48",
+	"time": 1693741728572,
+	"environment": {
+		"extension": "1.99.994",
+		"platform": "linux",
+		"chromium": 116
+	},
+	"allBrowserUrls": true,
+	"grabBackFocus": true,
+	"keyLayout": 1,
+	"keyMappings": [
+		"#!no-check",
+		"map K previousTab",
+		"map J nextTab",
+		""
+	],
+	"regexFindMode": true,
+	"searchUrl": "https://duckduckgo.com/?q=$s DuckDuckGo",
+	"vimSync": true,
+	"ignoreKeyboardLayout": 2
+}
