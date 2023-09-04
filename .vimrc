@@ -94,7 +94,8 @@ nnoremap <Space>k <cmd>lprev<CR>zz
 " map <Space> <Leader>
 " set shell=C:\Program\ Files\Git\bin\bash
 
-" let g:netrw_keepdir = 0
+let g:netrw_keepdir = 1 " 1 is the default keep current
+
 let g:netrw_localcopydircmd = 'cp -r'
 
 let g:netrw_banner = 0
