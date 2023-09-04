@@ -115,3 +115,21 @@ inoremap <C-j> <CR>
 set omnifunc=syntaxcomplete#Complete
 set noswapfile
 set nowrap
+set cuc
+au WinLeave * set nocursorcolumn
+au WinEnter * set cursorcolumn
+
+set cul
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+let &t_SR = "\e[4 q"
+
+set ttimeout
+set ttimeoutlen=1
+set ttyfast
+
+set keywordprg=zeal
+nnoremap K :!zeal "<cword>"&<CR><CR>
+set title
+set spell spelllang=en_us
+set nospell
