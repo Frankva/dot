@@ -1,5 +1,5 @@
 # dot
-dotfiles 
+dotfiles and config file
 
 
 # git command
