@@ -83,10 +83,15 @@ nnoremap & :&&<CR>
 " nnoremap <leader>Y <Cmd>let @"=@+<Cr>
 nnoremap <Space>y "+y
 vnoremap <Space>y "+y
-nnoremap <Space>. <Cmd>Vex<Cr>/
+nnoremap <Space>p "+p
+vnoremap <Space>p "+p
+nnoremap <Space>. <Cmd>Vex<Cr>
 nnoremap <Space><Cr> <Cmd>vert ter<Cr>
 nnoremap <Space>j <cmd>lnext<CR>zz
 nnoremap <Space>k <cmd>lprev<CR>zz
+nnoremap <Space>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
+
+
 
 
 
