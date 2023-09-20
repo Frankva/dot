@@ -138,3 +138,5 @@ nnoremap K :!zeal "<cword>"&<CR><CR>
 set title
 set spell spelllang=en_us
 set nospell
+
+command Arrow exec "normal /function<CR>ciwconst<Esc>f(i = <Esc>$i=> <Esc>$%a;<Esc>"
