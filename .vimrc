@@ -86,6 +86,7 @@ vnoremap <Space>y "+y
 nnoremap <Space>p "+p
 vnoremap <Space>p "+p
 nnoremap <Space>. <Cmd>Vex<Cr>
+nnoremap <Space>t <Cmd>Tex<Cr>
 nnoremap <Space><Cr> <Cmd>vert ter<Cr>
 nnoremap <Space>j <cmd>lnext<CR>zz
 nnoremap <Space>k <cmd>lprev<CR>zz
