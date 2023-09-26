@@ -78,15 +78,15 @@ xnoremap * y/\V<C-R>"<CR>
 xnoremap # y?\V<C-R>"<CR>
 nnoremap & :&&<CR>
 
-" let @y=":let @+=@\"\n"
-" nnoremap <leader>y <Cmd>let @+=@"<Cr>
-" nnoremap <leader>Y <Cmd>let @"=@+<Cr>
 nnoremap <Space>y "+y
+nnoremap <Space>Y "+y$
 vnoremap <Space>y "+y
+vnoremap <Space>Y "+y$
 nnoremap <Space>p "+p
 vnoremap <Space>p "+p
 nnoremap <Space>. <Cmd>Vex<Cr>
 nnoremap <Space>t <Cmd>Tex<Cr>
+nnoremap <Space><Space> <Cmd>Explore<Cr>
 nnoremap <Space><Cr> <Cmd>vert ter<Cr>
 nnoremap <Space>j <cmd>lnext<CR>zz
 nnoremap <Space>k <cmd>lprev<CR>zz
