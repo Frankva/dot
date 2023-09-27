@@ -143,3 +143,4 @@ set nospell
 command Arrow exec "normal /function<CR>ciwconst<Esc>f(i = <Esc>$i=> <Esc>$%a;<Esc>"
 command Rc exec ":tabedit ~/.vimrc"
 command Vimrc exec ":tabedit ~/.vimrc"
+command Ctags exec ":!ctags -R . &"
