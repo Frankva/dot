@@ -131,7 +131,7 @@ let &t_EI = "\e[2 q"
 let &t_SR = "\e[4 q"
 
 set ttimeout
-set ttimeoutlen=1
+" set ttimeoutlen=1 " this bug on windows when do `vim` in a shell
 set ttyfast
 
 set keywordprg=zeal
