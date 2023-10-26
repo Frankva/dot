@@ -91,17 +91,20 @@ vnoremap <Space>y "+y
 vnoremap <Space>Y "+y$
 nnoremap <Space>p "+p
 vnoremap <Space>p "+p
-nnoremap <Space>. <Cmd>Vex<CR><C-W>=
+nnoremap <Space>. <Cmd>Vex<CR><C-W><S-L><C-W>=
 nnoremap <Space>t <Cmd>Tex<CR>
 nnoremap <Space><Space> <Cmd>Explore<CR>
-nnoremap <Space><CR> <Cmd>vert ter<CR><C-W>=
+nnoremap <Space><CR> <Cmd>vert ter<CR><C-W><S-L><C-W>=
 nnoremap <Space>j <cmd>lnext<CR>zz
 nnoremap <Space>k <cmd>lprev<CR>zz
 nnoremap <Space>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left><C-f>
 nnoremap <Space>l :lvimgrep! "\<<C-r><C-w>\>" ./*/**\|lopen<CR>
 " nnoremap <Space>p :n %/**/**<Left>
 " nnoremap <Space>p :n ./**/**<Left>
-nnoremap <Space><C-p> q:ie **/*
+nnoremap <Space><C-P> q:ie **/*
+nnoremap <Space><S-P> q:ivsplit **/*
+nnoremap <Space><M-P> q:itabedit **/*
+nnoremap <Space><C-T> q:itabedit **/*
 
 " map <Space> <Leader>
 " set shell=C:\Program\ Files\Git\bin\bash
