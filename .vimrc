@@ -98,7 +98,7 @@ nnoremap <Space><CR> <Cmd>vert ter<CR><C-W><S-L><C-W>=
 nnoremap <Space>j <cmd>lnext<CR>zz
 nnoremap <Space>k <cmd>lprev<CR>zz
 nnoremap <Space>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left><C-f>
-nnoremap <Space>l :lvimgrep! "\<<C-r><C-w>\>" ./*/**\|lopen<CR>
+nnoremap <Space>l :lvimgrep! "\<<C-r><C-w>\>" ./*/**\|lopen<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><C-f>
 " nnoremap <Space>p :n %/**/**<Left>
 " nnoremap <Space>p :n ./**/**<Left>
 nnoremap <Space><C-P> q:ie **/*
