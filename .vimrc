@@ -105,6 +105,14 @@ nnoremap <Space><C-P> q:ie **/*
 nnoremap <Space><S-P> q:ivsplit **/*
 nnoremap <Space><M-P> q:itabedit **/*
 nnoremap <Space><C-T> q:itabedit **/*
+" nnoremap <Space>bb q:ibuffer <C-O>: buffers<CR>
+nnoremap <Space>bb :redir => tmp<CR>:silent execute ":buffers"<CR>:redir END<CR>q:79i-<C-[>:put =tmp<CR>:resize<CR>obuffer 
+nnoremap <Space>b, :redir => tmp<CR>:silent execute ":buffers"<CR>:redir END<CR>q:79i-<C-[>:put =tmp<CR>:resize<CR>obuffer 
+nnoremap <Space>bB :redir => tmp<CR>:silent execute ":buffers!"<CR>:redir END<CR>q:79i-<C-[>:put =tmp<CR>:resize<CR>obuffer 
+nnoremap <Space>b< :redir => tmp<CR>:silent execute ":buffers!"<CR>:redir END<CR>q:79i-<C-[>:put =tmp<CR>:resize<CR>obuffer 
+nnoremap <Space>bN :new\|wincmd o<CR>
+nnoremap <Space>w <C-W>
+nnoremap <Space>op :Lexplore<CR>
 
 " map <Space> <Leader>
 " set shell=C:\Program\ Files\Git\bin\bash
@@ -165,4 +173,3 @@ autocmd Filetype htmldjango setlocal tabstop=2 | setlocal et
 autocmd Filetype html setlocal tabstop=2 | setlocal et
 autocmd Filetype javascript setlocal tabstop=2 | setlocal et
 autocmd Filetype make setlocal tabstop=4 | setlocal noet
-
