@@ -166,10 +166,14 @@ command Rc exec ":tabedit ~/.vimrc"
 command Vimrc exec ":tabedit ~/.vimrc"
 command Ctags exec ":!ctags -R . &"
 
+set efm=%m "errorformat
+
 autocmd Filetype css setlocal tabstop=4 | setlocal et
 autocmd Filetype python setlocal tabstop=4 | setlocal et
-autocmd Filetype php setlocal tabstop=4 | setlocal et
+autocmd Filetype php setlocal tabstop=4 | setlocal et |
+    \setlocal efm=Date:%m,%f:%l
 autocmd Filetype htmldjango setlocal tabstop=2 | setlocal et
 autocmd Filetype html setlocal tabstop=2 | setlocal et
 autocmd Filetype javascript setlocal tabstop=2 | setlocal et
 autocmd Filetype make setlocal tabstop=4 | setlocal noet
+
