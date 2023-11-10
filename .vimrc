@@ -99,6 +99,7 @@ nnoremap <Space>j <cmd>lnext<CR>zz
 nnoremap <Space>k <cmd>lprev<CR>zz
 nnoremap <Space>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left><C-f>
 nnoremap <Space>l :lvimgrep! "\<<C-r><C-w>\>" ./*/**\|lopen<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><C-f>
+vnoremap <Space>l "ty:lvimgrep! '<C-r>t' ./*/**\|lopen<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><C-f>
 " nnoremap <Space>p :n %/**/**<Left>
 " nnoremap <Space>p :n ./**/**<Left>
 nnoremap <Space><C-P> q:ie **/*
@@ -171,7 +172,7 @@ set efm=%m "errorformat
 autocmd Filetype css setlocal tabstop=4 | setlocal et
 autocmd Filetype python setlocal tabstop=4 | setlocal et
 autocmd Filetype php setlocal tabstop=4 | setlocal et |
-    \setlocal efm=Date:%m,%f:%l
+    \setlocal efm=Date:%m,P%m,F%m,N%m,%f:%l
 autocmd Filetype htmldjango setlocal tabstop=2 | setlocal et
 autocmd Filetype html setlocal tabstop=2 | setlocal et
 autocmd Filetype javascript setlocal tabstop=2 | setlocal et
