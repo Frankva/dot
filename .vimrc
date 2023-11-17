@@ -98,11 +98,15 @@ nnoremap <Space><CR> <Cmd>vert ter<CR><C-W><S-L><C-W>=
 nnoremap <Space>j <cmd>lnext<CR>zz
 nnoremap <Space>k <cmd>lprev<CR>zz
 nnoremap <Space>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left><C-f>
+vnoremap <Space>s "ty:%s/<C-r>t/<C-r>t/gI<Left><Left><Left><C-f>
 nnoremap <Space>l :lvimgrep! "\<<C-r><C-w>\>" ./*/**\|lopen<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><C-f>
 vnoremap <Space>l "ty:lvimgrep! '<C-r>t' ./*/**\|lopen<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><C-f>
 " nnoremap <Space>p :n %/**/**<Left>
 " nnoremap <Space>p :n ./**/**<Left>
 nnoremap <Space><C-P> q:ie **/*
+vnoremap <Space><C-P> "tyq:ie **/*<C-r>t<C-x><C-v>
+nnoremap <Space>gf :next **/*<C-r><C-W>*<CR>
+vnoremap <Space>gf "ty:next **/*<C-r>t*<CR>
 nnoremap <Space><S-P> q:ivsplit **/*
 nnoremap <Space><M-P> q:itabedit **/*
 nnoremap <Space><C-T> q:itabedit **/*
@@ -150,7 +154,7 @@ set ttimeout
 set ttyfast
 
 set keywordprg=zeal
-nnoremap K :!zeal "<cword>"&<CR><CR>
+nnoremap K :!zeal "<cword>"& >/dev/null<CR><CR>
 
 " set keywordprg=xdg-open\ https://devdocs.io/\\#q=\
 " set keywordprg=start\ firefox\ https://devdocs.io/\\#q=\
@@ -162,19 +166,26 @@ set spell spelllang=en_us
 set nospell
 
 command Arrow exec "normal /function<CR>ciwconst<Esc>f(i = <Esc>$i=> <Esc>$%a;<Esc>"
-
+command Sneakcase exec "normal /\\u<CR>i_<Esc>l"
 command Rc exec ":tabedit ~/.vimrc"
 command Vimrc exec ":tabedit ~/.vimrc"
-command Ctags exec ":!ctags -R . &"
+command Ctags exec ":!nohup ctags -R . > /dev/null &"
+command Md exec ":!nohup ghostwriter '%' > /dev/null &"
+command Add exec ":!git add '%'"
+command Commit exec ":!git commit"
+command Status exec ":!git status"
+command Restore exec ":!git restore '%'"
+command Push exec ":!git push"
 
 set efm=%m "errorformat
 
 autocmd Filetype css setlocal tabstop=4 | setlocal et
 autocmd Filetype python setlocal tabstop=4 | setlocal et
 autocmd Filetype php setlocal tabstop=4 | setlocal et |
-    \setlocal efm=Date:%m,P%m,F%m,N%m,%f:%l
+    \setlocal efm=Date:%m,P%m,F%m,N%m,%f:%l | set nospell
 autocmd Filetype htmldjango setlocal tabstop=2 | setlocal et
 autocmd Filetype html setlocal tabstop=2 | setlocal et
 autocmd Filetype javascript setlocal tabstop=2 | setlocal et
 autocmd Filetype make setlocal tabstop=4 | setlocal noet
+autocmd Filetype markdown setlocal spell | setlocal spelllang=fr
 
