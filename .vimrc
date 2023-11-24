@@ -119,6 +119,11 @@ nnoremap <Space>bN :new\|wincmd o<CR>
 nnoremap <Space>w <C-W>
 nnoremap <Space>op :Lexplore<CR>
 
+vnoremap \` <C-[>a`<C-[>gvo<C-[>i`<C-[>
+vnoremap \' <C-[>a'<C-[>gvo<C-[>i'<C-[>
+vnoremap \" <C-[>a"<C-[>gvo<C-[>i"<C-[>
+vnoremap <Space>/ "ty/<C-R>t<CR>
+
 " map <Space> <Leader>
 " set shell=C:\Program\ Files\Git\bin\bash
 
@@ -176,6 +181,10 @@ command Commit exec ":!git commit"
 command Status exec ":!git status"
 command Restore exec ":!git restore '%'"
 command Push exec ":!git push"
+command Diff exec ":!git diff '%'"
+
+command DiffMaster exec ":!git diff HEAD..master '%'"
+command DiffMain exec ":!git diff HEAD..main '%'"
 
 set efm=%m "errorformat
 
