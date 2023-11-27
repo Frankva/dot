@@ -122,6 +122,8 @@ nnoremap <Space>op :Lexplore<CR>
 vnoremap \` <C-[>a`<C-[>gvo<C-[>i`<C-[>
 vnoremap \' <C-[>a'<C-[>gvo<C-[>i'<C-[>
 vnoremap \" <C-[>a"<C-[>gvo<C-[>i"<C-[>
+vnoremap \( <C-[>a)<C-[>gvo<C-[>i(<C-[>
+vnoremap \) <C-[>a)<C-[>gvo<C-[>i(<C-[>
 vnoremap <Space>/ "ty/<C-R>t<CR>
 
 " map <Space> <Leader>
