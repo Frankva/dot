@@ -91,40 +91,50 @@ vnoremap <Space>y "+y
 vnoremap <Space>Y "+y$
 nnoremap <Space>p "+p
 vnoremap <Space>p "+p
-nnoremap <Space>. <Cmd>Vex<CR><C-W><S-L><C-W>=
+"nnoremap <Space>. <Cmd>Vex<CR><C-W><S-L><C-W>=
 nnoremap <Space>t <Cmd>Tex<CR>
-nnoremap <Space><Space> <Cmd>Explore<CR>
+nnoremap <Space>. <Cmd>Explore<CR>
 nnoremap <Space><CR> <Cmd>vert ter<CR><C-W><S-L><C-W>=
 nnoremap <Space>j <cmd>lnext<CR>zz
 nnoremap <Space>k <cmd>lprev<CR>zz
 nnoremap <Space>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left><C-f>
 vnoremap <Space>s "ty:%s/<C-r>t/<C-r>t/gI<Left><Left><Left><C-f>
-nnoremap <Space>l :lvimgrep! "\<<C-r><C-w>\>" ./*/**\|lopen<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><C-f>
-vnoremap <Space>l "ty:lvimgrep! '<C-r>t' ./*/**\|lopen<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><C-f>
+nnoremap <Space>/ :lvimgrep! "\<<C-r><C-w>\>" ./*/**\|lopen<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><C-f>
+vnoremap <Space>/ "ty:lvimgrep! '<C-r>t' ./*/**\|lopen<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><C-f>
 " nnoremap <Space>p :n %/**/**<Left>
 " nnoremap <Space>p :n ./**/**<Left>
-nnoremap <Space><C-P> q:ie **/*
-vnoremap <Space><C-P> "tyq:ie **/*<C-r>t<C-x><C-v>
+" nnoremap <Space><C-P> q:ie **/*
+nnoremap <Space><Space> q:ie **/*
+vnoremap <Space><Space> "tyq:ie **/*<C-r>t<C-x><C-v>
+" vnoremap <Space><C-P> "tyq:ie **/*<C-r>t<C-x><C-v>
 nnoremap <Space>gf :next **/*<C-r><C-W>*<CR>
 vnoremap <Space>gf "ty:next **/*<C-r>t*<CR>
-nnoremap <Space><S-P> q:ivsplit **/*
-nnoremap <Space><M-P> q:itabedit **/*
-nnoremap <Space><C-T> q:itabedit **/*
+nnoremap <Space><C-W>gf "tyiw:tabnew<CR>:next **/*<C-r>t*<CR>
+vnoremap <Space><C-W>gf "ty:tabnew<CR>:next **/*<C-r>t*<CR>
+"nnoremap <Space><S-P> q:ivsplit **/*
+"nnoremap <Space><M-P> q:itabedit **/*
+"nnoremap <Space><C-T> q:itabedit **/*
 " nnoremap <Space>bb q:ibuffer <C-O>: buffers<CR>
 nnoremap <Space>bb :redir => tmp<CR>:silent execute ":buffers"<CR>:redir END<CR>q:79i-<C-[>:put =tmp<CR>:resize<CR>obuffer 
-nnoremap <Space>b, :redir => tmp<CR>:silent execute ":buffers"<CR>:redir END<CR>q:79i-<C-[>:put =tmp<CR>:resize<CR>obuffer 
+nnoremap <Space>, :redir => tmp<CR>:silent execute ":buffers"<CR>:redir END<CR>q:79i-<C-[>:put =tmp<CR>:resize<CR>obuffer 
 nnoremap <Space>bB :redir => tmp<CR>:silent execute ":buffers!"<CR>:redir END<CR>q:79i-<C-[>:put =tmp<CR>:resize<CR>obuffer 
-nnoremap <Space>b< :redir => tmp<CR>:silent execute ":buffers!"<CR>:redir END<CR>q:79i-<C-[>:put =tmp<CR>:resize<CR>obuffer 
+nnoremap <Space>< :redir => tmp<CR>:silent execute ":buffers!"<CR>:redir END<CR>q:79i-<C-[>:put =tmp<CR>:resize<CR>obuffer 
 nnoremap <Space>bN :new\|wincmd o<CR>
+nnoremap <Space>bd :bd<CR>
+nnoremap <Space>bk :bd<CR>
+nnoremap <Space><Tab>n :tabnew<CR>
+nnoremap <Space><Tab>d :tabclose<CR>
 nnoremap <Space>w <C-W>
 nnoremap <Space>op :Lexplore<CR>
 
-vnoremap \` <C-[>a`<C-[>gvo<C-[>i`<C-[>
-vnoremap \' <C-[>a'<C-[>gvo<C-[>i'<C-[>
-vnoremap \" <C-[>a"<C-[>gvo<C-[>i"<C-[>
-vnoremap \( <C-[>a)<C-[>gvo<C-[>i(<C-[>
-vnoremap \) <C-[>a)<C-[>gvo<C-[>i(<C-[>
-vnoremap <Space>/ "ty/<C-R>t<CR>
+vnoremap S` <C-[>a`<C-[>gvo<C-[>i`<C-[>
+vnoremap S' <C-[>a'<C-[>gvo<C-[>i'<C-[>
+vnoremap S" <C-[>a"<C-[>gvo<C-[>i"<C-[>
+vnoremap S( <C-[>a)<C-[>gvo<C-[>i(<C-[>
+vnoremap S) <C-[>a)<C-[>gvo<C-[>i(<C-[>
+
+vnoremap / "ty/<C-R>t<CR>
+nnoremap <Space>fs :w<CR>
 
 " map <Space> <Leader>
 " set shell=C:\Program\ Files\Git\bin\bash
@@ -200,3 +210,5 @@ autocmd Filetype javascript setlocal tabstop=2 | setlocal et
 autocmd Filetype make setlocal tabstop=4 | setlocal noet
 autocmd Filetype markdown setlocal spell | setlocal spelllang=fr
 
+
+set timeoutlen=10000
