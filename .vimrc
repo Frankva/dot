@@ -115,17 +115,40 @@ vnoremap <Space><C-W>gf "ty:tabnew<CR>:next **/*<C-r>t*<CR>
 "nnoremap <Space><M-P> q:itabedit **/*
 "nnoremap <Space><C-T> q:itabedit **/*
 " nnoremap <Space>bb q:ibuffer <C-O>: buffers<CR>
-nnoremap <Space>bb :redir => tmp<CR>:silent execute ":buffers"<CR>:redir END<CR>q:79i-<C-[>:put =tmp<CR>:resize<CR>obuffer 
-nnoremap <Space>, :redir => tmp<CR>:silent execute ":buffers"<CR>:redir END<CR>q:79i-<C-[>:put =tmp<CR>:resize<CR>obuffer 
-nnoremap <Space>bB :redir => tmp<CR>:silent execute ":buffers!"<CR>:redir END<CR>q:79i-<C-[>:put =tmp<CR>:resize<CR>obuffer 
-nnoremap <Space>< :redir => tmp<CR>:silent execute ":buffers!"<CR>:redir END<CR>q:79i-<C-[>:put =tmp<CR>:resize<CR>obuffer 
+nnoremap <Space>bb :redir => tmp<CR>:silent execute ":buffers"<CR>:redir END<CR>q:ggdG<C-[>:put =tmp<CR>:resize<CR>obuffer 
+nnoremap <Space>, :redir => tmp<CR>:silent execute ":buffers"<CR>:redir END<CR>q:ggdG<C-[>:put =tmp<CR>:resize<CR>obuffer 
+nnoremap <Space>bB :redir => tmp<CR>:silent execute ":buffers!"<CR>:redir END<CR>q:ggdG<C-[>:put =tmp<CR>:resize<CR>obuffer 
+nnoremap <Space>< :redir => tmp<CR>:silent execute ":buffers!"<CR>:redir END<CR>q:ggdG<C-[>:put =tmp<CR>:resize<CR>obuffer 
 nnoremap <Space>bN :new\|wincmd o<CR>
 nnoremap <Space>bd :bd<CR>
 nnoremap <Space>bk :bd<CR>
+nnoremap <Space>bn :bn<CR>
+nnoremap <Space>bp :bp<CR>
 nnoremap <Space><Tab>n :tabnew<CR>
 nnoremap <Space><Tab>d :tabclose<CR>
+nnoremap <Space><Tab>0 :tablast<CR>
+nnoremap <Space><Tab>1 :tabfirst<CR>
+nnoremap <Space><Tab>2 :tabnext 2<CR>
+nnoremap <Space><Tab>3 :tabnext 3<CR>
+nnoremap <Space><Tab>4 :tabnext 4<CR>
+nnoremap <Space><Tab>5 :tabnext 5<CR>
+nnoremap <Space><Tab>6 :tabnext 6<CR>
+nnoremap <Space><Tab>7 :tabnext 7<CR>
+nnoremap <Space><Tab>8 :tabnext 8<CR>
+nnoremap <Space><Tab>9 :tabnext 9<CR>
+nnoremap <Space><Tab>` g<Tab>
 nnoremap <Space>w <C-W>
+nnoremap <Space>cc :make<CR>
+nnoremap <Space>cx :copen<CR>
 nnoremap <Space>op :Lexplore<CR>
+nnoremap <Space>gg :!git commit<CR>
+nnoremap <Space>gb q:ggdG:r!git branch<CR>:resize<CR>o!git checkout 
+nnoremap <Space>gB :!git blame %<CR>
+nnoremap <Space>gg :!clear&&git status<CR>
+nnoremap <Space>iF "%p
+vnoremap <Space>iF "%p
+nnoremap <Space>if m'o<C-R>%<C-[>vT/"ty"_dd<C-O>"tp
+vnoremap <Space>if <C-[>o<C-R>%a<C-[>"tyT/"_ddgv"tp
 
 vnoremap S` <C-[>a`<C-[>gvo<C-[>i`<C-[>
 vnoremap S' <C-[>a'<C-[>gvo<C-[>i'<C-[>
