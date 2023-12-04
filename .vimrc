@@ -66,10 +66,8 @@ nnoremap n nzz
 nnoremap N Nzz
 nnoremap <C-U> <C-U>zz
 nnoremap <C-D> <C-D>zz
-
-" set guifont=Ubuntu_Mono:h14:cANSI:qDRAFT
-set guifont=Fira\ Code\ 14
-" set guifont=Fira_code:h14:cANSI:qDRAFT
+if ! has('win32')| set guifont=Fira\ Code\ 14 | endif
+if has('win32')| set guifont=Fira_code:h14:cANSI:qDRAFT | endif
 set guiligatures=!\"#$%&()*+-./:<=>?@[]^_{\|~><
 set renderoptions=type:directx
 set encoding=utf-8
@@ -174,6 +172,8 @@ nnoremap <Space>iF "%p
 xnoremap <Space>iF "%p
 nnoremap <Space>if m'o<C-R>%<C-[>vT/"ty"_dd<C-O>"tp
 xnoremap <Space>if <C-[>o<C-R>%a<C-[>"tyT/"_ddgv"tp
+nnoremap <Space>hrr :!reset<CR>
+xnoremap <Space>hrr :!reset<CR>
 
 xnoremap S` <C-[>a`<C-[>gvo<C-[>i`<C-[>
 xnoremap S' <C-[>a'<C-[>gvo<C-[>i'<C-[>
