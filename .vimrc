@@ -1,5 +1,5 @@
 set nocompatible        " use vim defaults
-set scrolloff=8         " keep n lines when scrolling
+set scrolloff=4         " keep n lines when scrolling
 set ai                  " set auto-indenting on for programming
 
 set showcmd             " display incomplete commands
@@ -59,7 +59,7 @@ set wop="pum,tagfile"
 nnoremap Y y$
 
 " like neovim P, do not use on endline 
-vnoremap P "_dP
+xnoremap P "_dP
 
 " center when
 nnoremap n nzz
@@ -68,7 +68,8 @@ nnoremap <C-U> <C-U>zz
 nnoremap <C-D> <C-D>zz
 
 " set guifont=Ubuntu_Mono:h14:cANSI:qDRAFT
-set guifont=Fira_code:h14:cANSI:qDRAFT
+set guifont=Fira\ Code\ 14
+" set guifont=Fira_code:h14:cANSI:qDRAFT
 set guiligatures=!\"#$%&()*+-./:<=>?@[]^_{\|~><
 set renderoptions=type:directx
 set encoding=utf-8
@@ -87,77 +88,108 @@ nnoremap & :&&<CR>
 
 nnoremap <Space>y "+y
 nnoremap <Space>Y "+y$
-vnoremap <Space>y "+y
-vnoremap <Space>Y "+y$
+xnoremap <Space>y "+y
+xnoremap <Space>Y "+y$
 nnoremap <Space>p "+p
-vnoremap <Space>p "+p
+xnoremap <Space>p "+p
 "nnoremap <Space>. <Cmd>Vex<CR><C-W><S-L><C-W>=
-nnoremap <Space>t <Cmd>Tex<CR>
-nnoremap <Space>. <Cmd>Explore<CR>
+nnoremap <Space><C-I><Space> <Cmd>Tex<CR>
+nnoremap <Space><Space> <Cmd>Explore<CR>
+nnoremap <Space>. q:gg"_dGiDo C-I or Tab<C-[>oe **/*
+xnoremap <Space>. "tyq:ie **/*<C-r>t<C-x><C-v>
 nnoremap <Space><CR> <Cmd>vert ter<CR><C-W><S-L><C-W>=
 nnoremap <Space>j <cmd>lnext<CR>zz
 nnoremap <Space>k <cmd>lprev<CR>zz
 nnoremap <Space>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left><C-f>
-vnoremap <Space>s "ty:%s/<C-r>t/<C-r>t/gI<Left><Left><Left><C-f>
+xnoremap <Space>s "ty:%s/<C-r>t/<C-r>t/gI<Left><Left><Left><C-f>
 nnoremap <Space>/ :lvimgrep! "\<<C-r><C-w>\>" ./*/**\|lopen<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><C-f>
-vnoremap <Space>/ "ty:lvimgrep! '<C-r>t' ./*/**\|lopen<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><C-f>
+xnoremap <Space>/ "ty:lvimgrep! '<C-r>t' ./*/**\|lopen<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><C-f>
 " nnoremap <Space>p :n %/**/**<Left>
 " nnoremap <Space>p :n ./**/**<Left>
 " nnoremap <Space><C-P> q:ie **/*
-nnoremap <Space><Space> q:ie **/*
-vnoremap <Space><Space> "tyq:ie **/*<C-r>t<C-x><C-v>
-" vnoremap <Space><C-P> "tyq:ie **/*<C-r>t<C-x><C-v>
+" xnoremap <Space><C-P> "tyq:ie **/*<C-r>t<C-x><C-v>
 nnoremap <Space>gf :next **/*<C-r><C-W>*<CR>
-vnoremap <Space>gf "ty:next **/*<C-r>t*<CR>
+xnoremap <Space>gf "ty:next **/*<C-r>t*<CR>
 nnoremap <Space><C-W>gf "tyiw:tabnew<CR>:next **/*<C-r>t*<CR>
-vnoremap <Space><C-W>gf "ty:tabnew<CR>:next **/*<C-r>t*<CR>
+xnoremap <Space><C-W>gf "ty:tabnew<CR>:next **/*<C-r>t*<CR>
 "nnoremap <Space><S-P> q:ivsplit **/*
 "nnoremap <Space><M-P> q:itabedit **/*
 "nnoremap <Space><C-T> q:itabedit **/*
 " nnoremap <Space>bb q:ibuffer <C-O>: buffers<CR>
-nnoremap <Space>bb :redir => tmp<CR>:silent execute ":buffers"<CR>:redir END<CR>q:ggdG<C-[>:put =tmp<CR>:resize<CR>obuffer 
-nnoremap <Space>, :redir => tmp<CR>:silent execute ":buffers"<CR>:redir END<CR>q:ggdG<C-[>:put =tmp<CR>:resize<CR>obuffer 
-nnoremap <Space>bB :redir => tmp<CR>:silent execute ":buffers!"<CR>:redir END<CR>q:ggdG<C-[>:put =tmp<CR>:resize<CR>obuffer 
-nnoremap <Space>< :redir => tmp<CR>:silent execute ":buffers!"<CR>:redir END<CR>q:ggdG<C-[>:put =tmp<CR>:resize<CR>obuffer 
-nnoremap <Space>bN :new\|wincmd o<CR>
+nnoremap <Space>bb :redir => tmp<CR>:silent execute ":buffers"<CR>:redir END<CR>q:gg"_dG<C-[>:put =tmp<CR>:resize<CR>obuffer 
+nnoremap <Space>, :redir => tmp<CR>:silent execute ":buffers"<CR>:redir END<CR>q:gg"_dG<C-[>:put =tmp<CR>:resize<CR>obuffer 
+nnoremap <Space>bB :redir => tmp<CR>:silent execute ":buffers!"<CR>:redir END<CR>q:gg"_dG<C-[>:put =tmp<CR>:resize<CR>obuffer 
+nnoremap <Space>< :redir => tmp<CR>:silent execute ":buffers!"<CR>:redir END<CR>q:gg"_dG<C-[>:put =tmp<CR>:resize<CR>obuffer 
+nnoremap <Space>bN :enew<CR>
 nnoremap <Space>bd :bd<CR>
 nnoremap <Space>bk :bd<CR>
+nnoremap <Space>bO :%bdelete<CR>
 nnoremap <Space>bn :bn<CR>
+nnoremap <Space>b] :bn<CR>
 nnoremap <Space>bp :bp<CR>
-nnoremap <Space><Tab>n :tabnew<CR>
-nnoremap <Space><Tab>d :tabclose<CR>
-nnoremap <Space><Tab>0 :tablast<CR>
-nnoremap <Space><Tab>1 :tabfirst<CR>
-nnoremap <Space><Tab>2 :tabnext 2<CR>
-nnoremap <Space><Tab>3 :tabnext 3<CR>
-nnoremap <Space><Tab>4 :tabnext 4<CR>
-nnoremap <Space><Tab>5 :tabnext 5<CR>
-nnoremap <Space><Tab>6 :tabnext 6<CR>
-nnoremap <Space><Tab>7 :tabnext 7<CR>
-nnoremap <Space><Tab>8 :tabnext 8<CR>
-nnoremap <Space><Tab>9 :tabnext 9<CR>
-nnoremap <Space><Tab>` g<Tab>
+nnoremap <Space>b[ :bp<CR>
+nnoremap <Space>bl :blast<CR>
+nnoremap <Space>bS :wa<CR>
+nnoremap <Space>bs :w<CR>
+
+nnoremap <Space>qq :qa<CR>
+nnoremap <Space>qQ :qa!<CR>
+nnoremap <Space>qs :mks!<CR>
+nnoremap <Space>qS :mks! 
+nnoremap <Space>ql :source Session.vim<CR>
+nnoremap <Space>qL :source 
+nnoremap <Space>tl :set rnu!<CR>
+nnoremap <Space>tI :set et!<CR>
+nnoremap <Space>tr :set readonly!<CR>
+nnoremap <Space>tw :set wrap!<CR>
+nnoremap <Space><C-I>n :tabnew<CR>
+nnoremap <Space><C-I>d :tabclose<CR>
+nnoremap <Space><C-I>0 :tablast<CR>
+nnoremap <Space><C-I>1 :tabfirst<CR>
+nnoremap <Space><C-I>2 :tabnext 2<CR>
+nnoremap <Space><C-I>3 :tabnext 3<CR>
+nnoremap <Space><C-I>4 :tabnext 4<CR>
+nnoremap <Space><C-I>5 :tabnext 5<CR>
+nnoremap <Space><C-I>6 :tabnext 6<CR>
+nnoremap <Space><C-I>7 :tabnext 7<CR>
+nnoremap <Space><C-I>8 :tabnext 8<CR>
+nnoremap <Space><C-I>9 :tabnext 9<CR>
+nnoremap <Space><C-I>` g<Tab>
+nnoremap <Space><C-I>] gt
+nnoremap <Space><C-I>[ gT
+nnoremap <Space><C-I>l :source 
+nnoremap <Space><C-I>r :source Session.vim
 nnoremap <Space>w <C-W>
+nnoremap <Space>wmm :resize<CR>:vertical resize<CR>
+nnoremap <Space>wms :resize<CR>
+nnoremap <Space>wmv :vertical resize<CR>
 nnoremap <Space>cc :make<CR>
 nnoremap <Space>cx :copen<CR>
 nnoremap <Space>op :Lexplore<CR>
 nnoremap <Space>gg :!git commit<CR>
-nnoremap <Space>gb q:ggdG:r!git branch<CR>:resize<CR>o!git checkout 
+nnoremap <Space>gb q:gg"_dG:r!git branch<CR>:resize<CR>o!git checkout 
 nnoremap <Space>gB :!git blame %<CR>
 nnoremap <Space>gg :!clear&&git status<CR>
 nnoremap <Space>iF "%p
-vnoremap <Space>iF "%p
+xnoremap <Space>iF "%p
 nnoremap <Space>if m'o<C-R>%<C-[>vT/"ty"_dd<C-O>"tp
-vnoremap <Space>if <C-[>o<C-R>%a<C-[>"tyT/"_ddgv"tp
+xnoremap <Space>if <C-[>o<C-R>%a<C-[>"tyT/"_ddgv"tp
 
-vnoremap S` <C-[>a`<C-[>gvo<C-[>i`<C-[>
-vnoremap S' <C-[>a'<C-[>gvo<C-[>i'<C-[>
-vnoremap S" <C-[>a"<C-[>gvo<C-[>i"<C-[>
-vnoremap S( <C-[>a)<C-[>gvo<C-[>i(<C-[>
-vnoremap S) <C-[>a)<C-[>gvo<C-[>i(<C-[>
+xnoremap S` <C-[>a`<C-[>gvo<C-[>i`<C-[>
+xnoremap S' <C-[>a'<C-[>gvo<C-[>i'<C-[>
+xnoremap S" <C-[>a"<C-[>gvo<C-[>i"<C-[>
+xnoremap S( <C-[>a)<C-[>gvo<C-[>i(<C-[>
+xnoremap S) <C-[>a)<C-[>gvo<C-[>i(<C-[>
 
-vnoremap / "ty/<C-R>t<CR>
+xnoremap / "ty/<C-R>t<CR>
 nnoremap <Space>fs :w<CR>
+nnoremap <Space>fS :w 
+nnoremap <Space>fy m'o<C-R>%<C-[>vT/y"_dd<C-O>
+nnoremap <Space>fE :tabedit ~/.vimrc<CR>
+
+inoremap <C-[> <C-[><C-[>
+xnoremap <C-[> <C-[><C-[>
+cnoremap <C-[> <C-[><C-[>
 
 " map <Space> <Leader>
 " set shell=C:\Program\ Files\Git\bin\bash
