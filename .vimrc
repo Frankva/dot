@@ -83,6 +83,10 @@ xnoremap # y?\V<C-R>"<CR>
 nnoremap & :&&<CR>
 
 
+" break undo sequence when new line
+inoremap <C-J> <C-G>u<CR>
+inoremap <C-M> <C-G>u<CR>
+inoremap <CR> <C-G>u<CR>
 
 nnoremap <Space>y "+y
 nnoremap <Space>Y "+y$
@@ -203,8 +207,6 @@ let g:netrw_banner = 0
 " let g:netrw_browse_split = 4
 " let g:netrw_altv = 1
 
-" for vs code with extension vim
-inoremap <C-j> <CR>
 
 " set omnifunc=syntaxcomplete#Complete
 set noswapfile
