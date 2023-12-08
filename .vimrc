@@ -96,8 +96,9 @@ nnoremap <Space>p "+p
 xnoremap <Space>p "+p
 "nnoremap <Space>. <Cmd>Vex<CR><C-W><S-L><C-W>=
 nnoremap <Space><C-I><Space> <Cmd>Tex<CR>
+nnoremap <Space><Tab><Space> <Cmd>Tex<CR>
 nnoremap <Space><Space> <Cmd>Explore<CR>
-nnoremap <Space>. q:gg"_dGiDo C-I or Tab<C-[>oe **/*
+nnoremap <Space>. q:gg"_dGiAfter typing filename, do C-I or Tab<C-[>oe **/*
 xnoremap <Space>. "tyq:ie **/*<C-r>t<C-x><C-v>
 nnoremap <Space><CR> <Cmd>vert ter<CR><C-W><S-L><C-W>=
 nnoremap <Space>j <cmd>lnext<CR>zz
@@ -133,6 +134,7 @@ nnoremap <Space>b[ :bp<CR>
 nnoremap <Space>bl :blast<CR>
 nnoremap <Space>bS :wa<CR>
 nnoremap <Space>bs :w<CR>
+if ! has('win32') | nnoremap <Space>bu :w !sudo tee % <CR>| endif
 
 nnoremap <Space>qq :qa<CR>
 nnoremap <Space>qQ :qa!<CR>
@@ -145,22 +147,39 @@ nnoremap <Space>tI :set et!<CR>
 nnoremap <Space>tr :set readonly!<CR>
 nnoremap <Space>tw :set wrap!<CR>
 nnoremap <Space><C-I>n :tabnew<CR>
+nnoremap <Space><Tab>n :tabnew<CR>
 nnoremap <Space><C-I>d :tabclose<CR>
+nnoremap <Space><Tab>d :tabclose<CR>
 nnoremap <Space><C-I>0 :tablast<CR>
+nnoremap <Space><Tab>0 :tablast<CR>
 nnoremap <Space><C-I>1 :tabfirst<CR>
+nnoremap <Space><Tab>1 :tabfirst<CR>
 nnoremap <Space><C-I>2 :tabnext 2<CR>
+nnoremap <Space><Tab>2 :tabnext 2<CR>
 nnoremap <Space><C-I>3 :tabnext 3<CR>
+nnoremap <Space><Tab>3 :tabnext 3<CR>
 nnoremap <Space><C-I>4 :tabnext 4<CR>
+nnoremap <Space><Tab>4 :tabnext 4<CR>
 nnoremap <Space><C-I>5 :tabnext 5<CR>
+nnoremap <Space><Tab>5 :tabnext 5<CR>
 nnoremap <Space><C-I>6 :tabnext 6<CR>
+nnoremap <Space><Tab>6 :tabnext 6<CR>
 nnoremap <Space><C-I>7 :tabnext 7<CR>
+nnoremap <Space><Tab>7 :tabnext 7<CR>
 nnoremap <Space><C-I>8 :tabnext 8<CR>
+nnoremap <Space><Tab>8 :tabnext 8<CR>
 nnoremap <Space><C-I>9 :tabnext 9<CR>
+nnoremap <Space><Tab>9 :tabnext 9<CR>
 nnoremap <Space><C-I>` g<Tab>
+nnoremap <Space><Tab>` g<Tab>
 nnoremap <Space><C-I>] gt
+nnoremap <Space><Tab>] gt
 nnoremap <Space><C-I>[ gT
+nnoremap <Space><Tab>[ gT
 nnoremap <Space><C-I>l :source 
+nnoremap <Space><Tab>l :source 
 nnoremap <Space><C-I>r :source Session.vim
+nnoremap <Space><Tab>r :source Session.vim
 nnoremap <Space>w <C-W>
 nnoremap <Space>wmm :resize<CR>:vertical resize<CR>
 nnoremap <Space>wms :resize<CR>
@@ -194,6 +213,10 @@ nnoremap <Space>fE :tabedit ~/.vimrc<CR>
 inoremap <C-[> <C-[><C-[>
 xnoremap <C-[> <C-[><C-[>
 cnoremap <C-[> <C-[><C-[>
+
+
+xnoremap . :normal . <CR>
+xnoremap @ :normal @
 
 " map <Space> <Leader>
 " set shell=C:\Program\ Files\Git\bin\bash
@@ -256,11 +279,11 @@ command DiffMaster exec ":!git diff HEAD..master '%'"
 command DiffMain exec ":!git diff HEAD..main '%'"
 
 set efm=%m "errorformat
-
+" setlocal efm=Date:%m,P%m,F%m,N%m,%f:%l |
 autocmd Filetype css setlocal tabstop=4 | setlocal et
 autocmd Filetype python setlocal tabstop=4 | setlocal et
 autocmd Filetype php setlocal tabstop=4 | setlocal et |
-    \setlocal efm=Date:%m,P%m,F%m,N%m,%f:%l | set nospell
+    \ set nospell
 autocmd Filetype htmldjango setlocal tabstop=2 | setlocal et
 autocmd Filetype html setlocal tabstop=2 | setlocal et
 autocmd Filetype javascript setlocal tabstop=2 | setlocal et
