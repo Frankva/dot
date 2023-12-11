@@ -188,7 +188,7 @@ nnoremap <Space>cc :make<CR>
 nnoremap <Space>cx :copen<CR>
 nnoremap <Space>op :Lexplore<CR>
 nnoremap <Space>gg :!git commit<CR>
-nnoremap <Space>gb q:gg"_dG:r!git branch<CR>:resize<CR>o!git checkout 
+nnoremap <Space>gb q:gg"_dG:r!git branch -a<CR>:resize<CR>o!git checkout 
 nnoremap <Space>gB :!git blame %<CR>
 nnoremap <Space>gg :!clear&&git status<CR>
 nnoremap <Space>iF "%p
@@ -288,7 +288,7 @@ autocmd Filetype htmldjango setlocal tabstop=2 | setlocal et
 autocmd Filetype html setlocal tabstop=2 | setlocal et
 autocmd Filetype javascript setlocal tabstop=2 | setlocal et
 autocmd Filetype make setlocal tabstop=4 | setlocal noet
-autocmd Filetype markdown setlocal spell | setlocal spelllang=fr
+" autocmd Filetype markdown setlocal spell | setlocal spelllang=fr
 
 
 set timeoutlen=10000
