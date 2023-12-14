@@ -187,10 +187,16 @@ nnoremap <Space>wmv :vertical resize<CR>
 nnoremap <Space>cc :make<CR>
 nnoremap <Space>cx :copen<CR>
 nnoremap <Space>op :Lexplore<CR>
-nnoremap <Space>gg :!git commit<CR>
+
+nnoremap <Space>gcc :!git commit<CR>
 nnoremap <Space>gb q:gg"_dG:r!git branch -a<CR>:resize<CR>o!git checkout 
 nnoremap <Space>gB :!git blame %<CR>
 nnoremap <Space>gg :!clear&&git status<CR>
+nnoremap <Space>gcr q:i!git init ./
+nnoremap <Space>gcR q:i!git clone <C-[>
+nnoremap <Space>gC q:i!git clone <C-[>
+nnoremap <Space>gL :!git log <CR>
+
 nnoremap <Space>iF "%p
 xnoremap <Space>iF "%p
 nnoremap <Space>if m'o<C-R>%<C-[>vT/"ty"_dd<C-O>"tp
