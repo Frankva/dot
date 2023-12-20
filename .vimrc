@@ -190,12 +190,15 @@ nnoremap <Space>op :Lexplore<CR>
 
 nnoremap <Space>gcc :!git commit<CR>
 nnoremap <Space>gb q:gg"_dG:r!git branch -a<CR>:resize<CR>o!git checkout 
-nnoremap <Space>gB :!git blame %<CR>
+nnoremap <Space>gB :!git blame '%'<CR>
 nnoremap <Space>gg :!clear&&git status<CR>
 nnoremap <Space>gcr q:i!git init ./
 nnoremap <Space>gcR q:i!git clone <C-[>
 nnoremap <Space>gC q:i!git clone <C-[>
 nnoremap <Space>gL :!git log <CR>
+nnoremap <Space>gS :!git add '%' <CR>
+nnoremap <Space>gU :!git rm '%' <CR>
+nnoremap <Space>gR :!git restore '%' <CR>
 
 nnoremap <Space>iF "%p
 xnoremap <Space>iF "%p
@@ -218,11 +221,19 @@ nnoremap <Space>fE :tabedit ~/.vimrc<CR>
 
 inoremap <C-[> <C-[><C-[>
 xnoremap <C-[> <C-[><C-[>
-cnoremap <C-[> <C-[><C-[>
+cnoremap <C-[> <C-c>
 
 
 xnoremap . :normal . <CR>
 xnoremap @ :normal @
+augroup netrw_mapping
+    autocmd!
+    autocmd filetype netrw call NetrwMapping()
+augroup END
+
+function! NetrwMapping()
+    noremap <buffer> X :cd % \| !explorer .<CR>
+endfunction
 
 " map <Space> <Leader>
 " set shell=C:\Program\ Files\Git\bin\bash
