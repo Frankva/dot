@@ -212,6 +212,10 @@ xnoremap S' <C-[>a'<C-[>gvo<C-[>i'<C-[>
 xnoremap S" <C-[>a"<C-[>gvo<C-[>i"<C-[>
 xnoremap S( <C-[>a)<C-[>gvo<C-[>i(<C-[>
 xnoremap S) <C-[>a)<C-[>gvo<C-[>i(<C-[>
+xnoremap S[ <C-[>a]<C-[>gvo<C-[>i[<C-[>
+xnoremap S] <C-[>a]<C-[>gvo<C-[>i[<C-[>
+xnoremap S{ <C-[>a}<C-[>gvo<C-[>i{<C-[>
+xnoremap S} <C-[>a}<C-[>gvo<C-[>i{<C-[>
 
 xnoremap / "ty/<C-R>t<CR>
 nnoremap <Space>fs :w<CR>
@@ -309,3 +313,8 @@ autocmd Filetype make setlocal tabstop=4 | setlocal noet
 
 
 set timeoutlen=10000
+
+autocmd BufRead,BufNewFile *.org setfiletype org |
+\ syntax match PreProc  /^\*.*/ |  syntax match String /<.*>/ |
+\syntax match String /\[.*\]/ | syntax match Comment /^#.*/ |
+\syntax match String =\v<(((https?|ftp|gopher)://|(mailto|file|news):)[^' ^I<>"]+|(www|web|w3)[a-z0-9_-]*\.[a-z0-9._-]+\.[^' ^I<>"]+)[a-zA-Z0-9/]=
