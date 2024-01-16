@@ -191,7 +191,9 @@ nnoremap <Space>op :Lexplore<CR>
 nnoremap <Space>gcc :!git commit<CR>
 nnoremap <Space>gb q:gg"_dG:r!git branch -a<CR>:resize<CR>o!git checkout 
 nnoremap <Space>gB :!git blame '%'<CR>
-nnoremap <Space>gg :!clear&&git status<CR>
+" nnoremap <Space>gg :!clear&&git status<CR>
+nnoremap <Space>gg :!clear&&git status --show-stash&&git add --interactive<CR>
+ 
 nnoremap <Space>gcr q:i!git init ./
 nnoremap <Space>gcR q:i!git clone <C-[>
 nnoremap <Space>gC q:i!git clone <C-[>
