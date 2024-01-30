@@ -1,0 +1,20 @@
+#!/usr/bin/bash
+
+if [[ $1 == 'right' ]]
+then
+    xrandr --output HDMI-A-0 --auto --right-of eDP
+elif [[ $1 == 'left' ]]
+then
+    xrandr --output HDMI-A-0 --auto --left-of eDP
+elif [[ $1 == 'off' ]]
+then
+    xrandr --output HDMI-A-0 --auto --off 
+elif [[ $1 == 'max' ]]
+then
+    xrandr --output HDMI-A-0 --auto --same-as eDP
+elif [[ $1 == '' ]]
+then
+    xrandr --output HDMI-A-0  --mode 1920x1080 --same-as eDP
+fi
+
+exit 0
