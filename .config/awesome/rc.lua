@@ -49,7 +49,8 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+-- beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+beautiful.init(gears.filesystem.get_themes_dir() .. "sky/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
@@ -66,8 +67,8 @@ modkey = "Mod4"
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
     awful.layout.suit.max,
-    awful.layout.suit.tile,
     awful.layout.suit.floating,
+    awful.layout.suit.tile,
     awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
     awful.layout.suit.tile.top,
@@ -247,7 +248,19 @@ root.buttons(gears.table.join(
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
+    -- perso
     awful.key({ "Control", "Mod1" }, "l", function () awful.util.spawn("xflock4") end),
+    awful.key({ "Control", "Mod1" }, "Delete", function () awful.util.spawn("xfce4-session-logout") end),
+    awful.key({ modkey }, "#107", function () awful.util.spawn("/home/frankva/bin/capture_full") end), -- #107 = Print Screen key
+    awful.key({"Control", "Mod1"}, "3", function () awful.util.spawn("/home/frankva/bin/capture_full") end), 
+    awful.key({"Control", "Mod1"}, "4", function () awful.util.spawn("/home/frankva/bin/capture_region") end), 
+    awful.key({ modkey }, "Delete", function () awful.util.spawn("xkill") end), 
+    awful.key({ modkey,           }, "a",   awful.tag.viewprev,
+              {description = "view previous", group = "tag"}),
+    awful.key({ modkey,           }, "d",  awful.tag.viewnext,
+              {description = "view next", group = "tag"}),
+    -- endperso
+
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
@@ -345,33 +358,7 @@ globalkeys = gears.table.join(
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"}),
-
-    --perso
-    awful.key({}, "XF86AudioRaiseVolume", function()
-      os.execute("amixer -D pulse sset Master 5%+")
-    end),
-    awful.key({}, "XF86AudioLowerVolume", function()
-      os.execute("amixer -D pulse sset Master 5%-")
-    end),
-    awful.key({ modkey }, "e", function()
-      os.execute("nohup thunar &")
-    end),
-    awful.key({ modkey, "Shift", "Mod1" }, "3", function()
-      os.execute("~/bin/capture_full")
-    end),
-    awful.key({ modkey, "Shift", "Mod1" }, "4", function()
-      os.execute("~/bin/capture_region")
-    end),
-    awful.key({ modkey, "Shift", "Mod1" }, "5", function()
-      os.execute("nohup xfce4-screenshooter &")
-    end),
-    awful.key({}, "Print", function()
-      os.execute("nohup xfce4-screenshooter -f -o gimp &")
-    end),
-    awful.key({ modkey }, "l", function()
-      os.execute("nohup i3lock -c 000000 &")
-    end)
+              {description = "show the menubar", group = "launcher"})
 )
 
 clientkeys = gears.table.join(
@@ -608,11 +595,13 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
-
 awful.spawn.with_shell(
     'if (xrdb -query | grep -q "^awesome\\.started:\\s*true$"); then exit; fi;' ..
     'xrdb -merge <<< "awesome.started:true";' ..
     -- list each of your autostart commands, followed by ; inside single quotes, followed by ..
-    'nohup ~/bin/autorun_awesomewm ;' ..
+    'xfsettingsd --no-daemon | (sleep 2 && killall xfsettingsd);' ..
+    'setxkbmap us qwerty-fr;' ..
+    -- 'nohup redshift -l 46.93:08.22 -t 5700:3600 -g 0.8 -m randr -v;' ..
+    'nohup syncthing --no-browser ;' ..
     'dex --environment Awesome --autostart --search-paths "$XDG_CONFIG_DIRS/autostart:$XDG_CONFIG_HOME/autostart"' -- https://github.com/jceb/dex
-    )
+)
