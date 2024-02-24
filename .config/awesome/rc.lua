@@ -49,9 +49,8 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
--- beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
-beautiful.init(gears.filesystem.get_themes_dir() .. "sky/theme.lua")
-
+-- beautiful.init(gears.filesystem.get_themes_dir() .. "sky/theme.lua")
+beautiful.init("/home/frankva/.config/awesome/theme.lua")
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
 editor = os.getenv("EDITOR") or "editor"
@@ -249,16 +248,18 @@ root.buttons(gears.table.join(
 -- {{{ Key bindings
 globalkeys = gears.table.join(
     -- perso
-    awful.key({ "Control", "Mod1" }, "l", function () awful.util.spawn("xflock4") end),
-    awful.key({ "Control", "Mod1" }, "Delete", function () awful.util.spawn("xfce4-session-logout") end),
-    awful.key({ modkey }, "#107", function () awful.util.spawn("/home/frankva/bin/capture_full") end), -- #107 = Print Screen key
-    awful.key({"Control", "Mod1"}, "3", function () awful.util.spawn("/home/frankva/bin/capture_full") end), 
-    awful.key({"Control", "Mod1"}, "4", function () awful.util.spawn("/home/frankva/bin/capture_region") end), 
-    awful.key({ modkey }, "Delete", function () awful.util.spawn("xkill") end), 
+    awful.key({ "Control", "Mod1" }, "l", function () awful.spawn("xflock4") end),
+    awful.key({ "Control", "Mod1" }, "Delete", function () awful.spawn("xfce4-session-logout") end),
+    awful.key({ modkey }, "#107", function () awful.spawn("/home/frankva/bin/capture_full") end), -- #107 = Print Screen key
+    awful.key({"Control", "Mod1"}, "3", function () awful.spawn("/home/frankva/bin/capture_full") end), 
+    awful.key({"Control", "Mod1"}, "4", function () awful.spawn("/home/frankva/bin/capture_region") end), 
+    awful.key({ modkey }, "Delete", function () awful.spawn("xkill") end), 
     awful.key({ modkey,           }, "a",   awful.tag.viewprev,
               {description = "view previous", group = "tag"}),
     awful.key({ modkey,           }, "d",  awful.tag.viewnext,
               {description = "view next", group = "tag"}),
+    awful.key({ modkey }, "e", function () awful.spawn("thunar") end), 
+    awful.key({ modkey }, "i", function () awful.spawn("/home/frankva/bin/xfce4-settings-manager") end), 
     -- endperso
 
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
@@ -599,9 +600,11 @@ awful.spawn.with_shell(
     'if (xrdb -query | grep -q "^awesome\\.started:\\s*true$"); then exit; fi;' ..
     'xrdb -merge <<< "awesome.started:true";' ..
     -- list each of your autostart commands, followed by ; inside single quotes, followed by ..
-    'xfsettingsd --no-daemon | (sleep 2 && killall xfsettingsd);' ..
+    'xfsettingsd | (sleep 2 && killall xfsettingsd);' ..
     'setxkbmap us qwerty-fr;' ..
     -- 'nohup redshift -l 46.93:08.22 -t 5700:3600 -g 0.8 -m randr -v;' ..
-    'nohup syncthing --no-browser ;' ..
-    'dex --environment Awesome --autostart --search-paths "$XDG_CONFIG_DIRS/autostart:$XDG_CONFIG_HOME/autostart"' -- https://github.com/jceb/dex
+    'syncthing --no-browser ;' 
+    -- 'dex --environment Awesome --autostart --search-paths "$XDG_CONFIG_DIRS/autostart:$XDG_CONFIG_HOME/autostart"' -- https://github.com/jceb/dex
 )
+
+
