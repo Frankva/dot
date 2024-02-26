@@ -47,7 +47,7 @@ set nolrm
 set mouse=nvi
 set mousem="popup_setpos"
 set nf="bin,hex"
-set ssop="blank,buffers,curdir,folds,help,tabpages,winsize,terminal"
+set sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,terminal"
 set nosol
 " set tags="./tags;,tags"
 set tags=tags
@@ -100,7 +100,10 @@ nnoremap <Space><Tab><Space> <Cmd>Tex<CR>
 nnoremap <Space><Space> <Cmd>Explore<CR>
 nnoremap <Space>. q:gg"_dGiAfter typing filename, do C-I or Tab<C-[>oe **/*
 xnoremap <Space>. "tyq:ie **/*<C-r>t<C-x><C-v>
-nnoremap <Space><CR> <Cmd>vert ter<CR><C-W><S-L><C-W>=
+" nnoremap <Space><CR> <Cmd>vert ter<CR><C-W><S-L><C-W>=
+nnoremap <Space><CR> <Cmd>terminal ++curwin<CR>
+nnoremap <Space>oR <Cmd>terminal ++curwin<CR>
+nnoremap <Space>or <Cmd>terminal<CR><C-W><S-J><Cmd>res 12<CR>
 nnoremap <Space>j <cmd>lnext<CR>zz
 nnoremap <Space>k <cmd>lprev<CR>zz
 nnoremap <Space>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left><C-f>
@@ -148,6 +151,7 @@ nnoremap <Space>tr :set readonly!<CR>
 nnoremap <Space>tw :set wrap!<CR>
 nnoremap <Space><C-I>n :tabnew<CR>
 nnoremap <Space><Tab>n :tabnew<CR>
+nnoremap <Space>of <Cmd>tabnew<CR><C-Tab>
 nnoremap <Space><C-I>d :tabclose<CR>
 nnoremap <Space><Tab>d :tabclose<CR>
 nnoremap <Space><C-I>0 :tablast<CR>
@@ -190,6 +194,7 @@ nnoremap <Space>op :Lexplore<CR>
 
 nnoremap <Space>gcc :!git commit<CR>
 nnoremap <Space>gb q:gg"_dG:r!git branch -a<CR>:resize<CR>o!git checkout 
+" nnoremap <Space>gb :!git branch -a && bash<CR>git t checkout checkout 
 nnoremap <Space>gB :!git blame '%'<CR>
 " nnoremap <Space>gg :!clear&&git status<CR>
 nnoremap <Space>gg :!clear&&git status --show-stash&&git add --interactive<CR>
@@ -202,12 +207,16 @@ nnoremap <Space>gS :!git add '%' <CR>
 nnoremap <Space>gU :!git rm '%' <CR>
 nnoremap <Space>gR :!git restore '%' <CR>
 
+
 nnoremap <Space>iF "%p
 xnoremap <Space>iF "%p
 nnoremap <Space>if m'o<C-R>%<C-[>vT/"ty"_dd<C-O>"tp
 xnoremap <Space>if <C-[>o<C-R>%a<C-[>"tyT/"_ddgv"tp
 nnoremap <Space>hrr :!reset<CR>
 xnoremap <Space>hrr :!reset<CR>
+
+let testfilecommand="!python '%' "
+nnoremap <Space>ft :<C-R>=testfilecommand<cr><cr>
 
 xnoremap S` <C-[>a`<C-[>gvo<C-[>i`<C-[>
 xnoremap S' <C-[>a'<C-[>gvo<C-[>i'<C-[>
@@ -219,7 +228,7 @@ xnoremap S] <C-[>a]<C-[>gvo<C-[>i[<C-[>
 xnoremap S{ <C-[>a}<C-[>gvo<C-[>i{<C-[>
 xnoremap S} <C-[>a}<C-[>gvo<C-[>i{<C-[>
 
-xnoremap / "ty/<C-R>t<CR>
+" xnoremap v "ty/<C-R>t<CR>
 nnoremap <Space>fs :w<CR>
 nnoremap <Space>fS :w 
 nnoremap <Space>fy m'o<C-R>%<C-[>vT/y"_dd<C-O>
@@ -230,8 +239,10 @@ xnoremap <C-[> <C-[><C-[>
 cnoremap <C-[> <C-c>
 
 
-xnoremap . :normal . <CR>
-xnoremap @ :normal @
+" xnoremap . :normal . <CR>
+" xnoremap @ :normal @
+
+" remap netrw
 augroup netrw_mapping
     autocmd!
     autocmd filetype netrw call NetrwMapping()
@@ -240,6 +251,7 @@ augroup END
 function! NetrwMapping()
     noremap <buffer> X :cd % \| !explorer .<CR>
 endfunction
+" end remap netrw
 
 " map <Space> <Leader>
 " set shell=C:\Program\ Files\Git\bin\bash
@@ -285,7 +297,10 @@ set title
 set spell spelllang=en_us
 set nospell
 
-command Arrow exec "normal /function<CR>ciwconst<Esc>f(i = <Esc>$i=> <Esc>$%a;<Esc>"
+command Arrow exec "normal 0/function<CR>ciwconst<Esc>f(i = <Esc>$i=> <Esc>$%a;<Esc>"
+command Getter exec "normal 0yypciwpublic<Esc>wwyiw~biget<Esc>$xa() <Esc>a{<Esc>o}<Esc>koreturn <C-r>0;<Esc>"
+command Setter exec "normal 0yypciwpublic<Esc>w\"tyiwciwvoid<Esc>w\"iyiw~biset<Esc>$s(<C-r>t <C-r>i) {<Esc>othis.<C-r>i = <C-r>i;<Esc>o}<Esc>"
+command Gsetter exec "normal 0:Setter<CR>3k:Getter<CR>kV5jo0dk"
 command Sneakcase exec "normal /\\u<CR>i_<Esc>l"
 command Rc exec ":tabedit ~/.vimrc"
 command Vimrc exec ":tabedit ~/.vimrc"
@@ -297,7 +312,6 @@ command Status exec ":!git status"
 command Restore exec ":!git restore '%'"
 command Push exec ":!git push"
 command Diff exec ":!git diff '%'"
-
 command DiffMaster exec ":!git diff HEAD..master '%'"
 command DiffMain exec ":!git diff HEAD..main '%'"
 
@@ -309,8 +323,12 @@ autocmd Filetype php setlocal tabstop=4 | setlocal et |
     \ set nospell
 autocmd Filetype htmldjango setlocal tabstop=2 | setlocal et
 autocmd Filetype html setlocal tabstop=2 | setlocal et
+autocmd Filetype jsp setlocal tabstop=2 | setlocal et
 autocmd Filetype javascript setlocal tabstop=2 | setlocal et
 autocmd Filetype make setlocal tabstop=4 | setlocal noet
+autocmd Filetype java setlocal tabstop=4 | setlocal et
+autocmd Filetype pug setlocal tabstop=2 | setlocal et
+autocmd Filetype json setlocal tabstop=2 | setlocal et
 " autocmd Filetype markdown setlocal spell | setlocal spelllang=fr
 
 
@@ -320,3 +338,13 @@ autocmd BufRead,BufNewFile *.org setfiletype org |
 \ syntax match PreProc  /^\*.*/ |  syntax match String /<.*>/ |
 \syntax match String /\[.*\]/ | syntax match Comment /^#.*/ |
 \syntax match String =\v<(((https?|ftp|gopher)://|(mailto|file|news):)[^' ^I<>"]+|(www|web|w3)[a-z0-9_-]*\.[a-z0-9._-]+\.[^' ^I<>"]+)[a-zA-Z0-9/]=
+
+" macro sql to string python with return
+"vipI'ü[vip$A 'ü[vip>Ireturn ü[wi(ü[vipü[$a)ü[vipoj>
+let @j = "vipI'vip$A 'vip>Ireturn wi(vip$a)vipoj>"
+let sqlToString = "vipI'vip$A 'vip>Ireturn wi(vip$a)vipoj>"
+" command SqlToString exec "normal vipI'vip$A 'vip>Ireturn wi(vip$a)vipoj>"
+
+
+
+
