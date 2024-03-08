@@ -100,8 +100,8 @@ nnoremap <Space><Tab><Space> <Cmd>Tex<CR>
 nnoremap <Space><Space> <Cmd>Explore<CR>
 nnoremap <Space>. q:gg"_dGiAfter typing filename, do C-I or Tab<C-[>oe **/*
 xnoremap <Space>. "tyq:ie **/*<C-r>t<C-x><C-v>
-" nnoremap <Space><CR> <Cmd>vert ter<CR><C-W><S-L><C-W>=
-nnoremap <Space><CR> <Cmd>terminal ++curwin<CR>
+nnoremap <Space><CR> <Cmd>vert ter<CR><C-W><S-L><C-W>=
+" nnoremap <Space><CR> <Cmd>terminal ++curwin<CR>
 nnoremap <Space>oR <Cmd>terminal ++curwin<CR>
 nnoremap <Space>or <Cmd>terminal<CR><C-W><S-J><Cmd>res 12<CR>
 nnoremap <Space>j <cmd>lnext<CR>zz
@@ -218,15 +218,18 @@ xnoremap <Space>hrr :!reset<CR>
 let testfilecommand="!python '%' "
 nnoremap <Space>ft :<C-R>=testfilecommand<cr><cr>
 
+xnoremap S<Space> <C-[>a <C-[>gvo<C-[>i <C-[>
 xnoremap S` <C-[>a`<C-[>gvo<C-[>i`<C-[>
 xnoremap S' <C-[>a'<C-[>gvo<C-[>i'<C-[>
 xnoremap S" <C-[>a"<C-[>gvo<C-[>i"<C-[>
-xnoremap S( <C-[>a)<C-[>gvo<C-[>i(<C-[>
+xnoremap S( <C-[>i(<C-[>gvo<C-[>la)<C-[>
 xnoremap S) <C-[>a)<C-[>gvo<C-[>i(<C-[>
-xnoremap S[ <C-[>a]<C-[>gvo<C-[>i[<C-[>
+xnoremap S[ <C-[>i[<C-[>gvo<C-[>la]<C-[>
 xnoremap S] <C-[>a]<C-[>gvo<C-[>i[<C-[>
-xnoremap S{ <C-[>a}<C-[>gvo<C-[>i{<C-[>
+xnoremap S{ <C-[>i{<C-[>gvo<C-[>la}<C-[>
 xnoremap S} <C-[>a}<C-[>gvo<C-[>i{<C-[>
+xnoremap S> <C-[>a><C-[>gvo<C-[>i<<C-[>
+xnoremap S< <C-[>i<<C-[>gvo<C-[>la><C-[>
 
 " xnoremap v "ty/<C-R>t<CR>
 nnoremap <Space>fs :w<CR>
@@ -285,8 +288,8 @@ set ttimeout
 " set ttimeoutlen=1 " this bug on windows when do `vim` in a shell
 set ttyfast
 
-set keywordprg=zeal
-nnoremap K :!zeal "<cword>"& >/dev/null<CR><CR>
+set keywordprg=man
+nnoremap K :!zeal "<cword>" > /dev/null &<CR><CR>
 
 " set keywordprg=xdg-open\ https://devdocs.io/\\#q=\
 " set keywordprg=start\ firefox\ https://devdocs.io/\\#q=\
@@ -329,6 +332,7 @@ autocmd Filetype make setlocal tabstop=4 | setlocal noet
 autocmd Filetype java setlocal tabstop=4 | setlocal et
 autocmd Filetype pug setlocal tabstop=2 | setlocal et
 autocmd Filetype json setlocal tabstop=2 | setlocal et
+autocmd Filetype sh setlocal tabstop=4 | setlocal et | nnoremap K K
 " autocmd Filetype markdown setlocal spell | setlocal spelllang=fr
 
 
