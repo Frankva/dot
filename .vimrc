@@ -97,7 +97,11 @@ xnoremap <Space>p "+p
 "nnoremap <Space>. <Cmd>Vex<CR><C-W><S-L><C-W>=
 nnoremap <Space><C-I><Space> <Cmd>Tex<CR>
 nnoremap <Space><Tab><Space> <Cmd>Tex<CR>
+
+let g:netrw_fastbrowse=2
+" nnoremap <Space><Space> :Explore<CR><C-6>:Rexplore<CR>
 nnoremap <Space><Space> <Cmd>Explore<CR>
+
 nnoremap <Space>. q:gg"_dGiAfter typing filename, do C-I or Tab<C-[>oe **/*
 xnoremap <Space>. "tyq:ie **/*<C-r>t<C-x><C-v>
 nnoremap <Space><CR> <Cmd>vert ter<CR><C-W><S-L><C-W>=
@@ -210,7 +214,8 @@ nnoremap <Space>gR :!git restore '%' <CR>
 
 nnoremap <Space>iF "%p
 xnoremap <Space>iF "%p
-nnoremap <Space>if m'o<C-R>%<C-[>vT/"ty"_dd<C-O>"tp
+let insertFileName = 'm''o%vT/"ty"_dd"tp'
+nnoremap <Space>if @=insertFileName<CR>
 xnoremap <Space>if <C-[>o<C-R>%a<C-[>"tyT/"_ddgv"tp
 nnoremap <Space>hrr :!reset<CR>
 xnoremap <Space>hrr :!reset<CR>
@@ -234,7 +239,8 @@ xnoremap S< <C-[>i<<C-[>gvo<C-[>la><C-[>
 " xnoremap v "ty/<C-R>t<CR>
 nnoremap <Space>fs :w<CR>
 nnoremap <Space>fS :w 
-nnoremap <Space>fy m'o<C-R>%<C-[>vT/y"_dd<C-O>
+let copyFile = 'mto%vT/y"_dd''t'
+nnoremap <Space>fy @=copyFile<CR>
 nnoremap <Space>fE :tabedit ~/.vimrc<CR>
 
 inoremap <C-[> <C-[><C-[>
@@ -254,6 +260,9 @@ augroup END
 function! NetrwMapping()
     noremap <buffer> X :cd % \| !explorer .<CR>
 endfunction
+
+let g:netrw_browsex_viewer= "xdg-open"
+
 " end remap netrw
 
 " map <Space> <Leader>
