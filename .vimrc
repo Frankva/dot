@@ -110,10 +110,12 @@ nnoremap <Space>oR <Cmd>terminal ++curwin<CR>
 nnoremap <Space>or <Cmd>terminal<CR><C-W><S-J><Cmd>res 12<CR>
 nnoremap <Space>j <cmd>lnext<CR>zz
 nnoremap <Space>k <cmd>lprev<CR>zz
-nnoremap <Space>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left><C-f>
-xnoremap <Space>s "ty:%s/<C-r>t/<C-r>t/gI<Left><Left><Left><C-f>
+nnoremap <Space>ss :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left><C-f>
+xnoremap <Space>ss "ty:%s/<C-r>t/<C-r>t/gI<Left><Left><Left><C-f>
 nnoremap <Space>/ :lvimgrep! "\<<C-r><C-w>\>" ./*/**\|lopen<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><C-f>
 xnoremap <Space>/ "ty:lvimgrep! '<C-r>t' ./*/**\|lopen<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><C-f>
+nnoremap <Space>sp :lvimgrep! "\<<C-r><C-w>\>" ./*/**\|lopen<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><C-f>
+xnoremap <Space>sp "ty:lvimgrep! '<C-r>t' ./*/**\|lopen<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><C-f>
 " nnoremap <Space>p :n %/**/**<Left>
 " nnoremap <Space>p :n ./**/**<Left>
 " nnoremap <Space><C-P> q:ie **/*
@@ -155,6 +157,8 @@ nnoremap <Space>tr :set readonly!<CR>
 nnoremap <Space>tw :set wrap!<CR>
 nnoremap <Space><C-I>n :tabnew<CR>
 nnoremap <Space><Tab>n :tabnew<CR>
+nnoremap <Space><C-I>v :tabedit %<CR>
+nnoremap <Space><Tab>v :tabedit %<CR>
 nnoremap <Space>of <Cmd>tabnew<CR><C-Tab>
 nnoremap <Space><C-I>d :tabclose<CR>
 nnoremap <Space><Tab>d :tabclose<CR>
@@ -201,7 +205,8 @@ nnoremap <Space>gb q:gg"_dG:r!git branch -a<CR>:resize<CR>o!git checkout
 " nnoremap <Space>gb :!git branch -a && bash<CR>git t checkout checkout 
 nnoremap <Space>gB :!git blame '%'<CR>
 " nnoremap <Space>gg :!clear&&git status<CR>
-nnoremap <Space>gg :!clear&&git status --show-stash&&git add --interactive<CR>
+nnoremap <Space>ggg :!clear&&git status --show-stash&&git add --interactive<CR>
+nnoremap <Space>ggp :!git push<CR>
  
 nnoremap <Space>gcr q:i!git init ./
 nnoremap <Space>gcR q:i!git clone <C-[>
@@ -278,7 +283,9 @@ let g:netrw_banner = 0
 " let g:netrw_altv = 1
 
 
-" set omnifunc=syntaxcomplete#Complete
+set omnifunc=syntaxcomplete#Complete
+" the default si : set complete=.,w,b,u,t,i
+set complete=.,w,b,u,i
 set noswapfile
 set nowrap
 
@@ -353,10 +360,10 @@ autocmd BufRead,BufNewFile *.org setfiletype org |
 \syntax match String =\v<(((https?|ftp|gopher)://|(mailto|file|news):)[^' ^I<>"]+|(www|web|w3)[a-z0-9_-]*\.[a-z0-9._-]+\.[^' ^I<>"]+)[a-zA-Z0-9/]=
 
 " macro sql to string python with return
-"vipI'ü[vip$A 'ü[vip>Ireturn ü[wi(ü[vipü[$a)ü[vipoj>
-let @j = "vipI'vip$A 'vip>Ireturn wi(vip$a)vipoj>"
 let sqlToString = "vipI'vip$A 'vip>Ireturn wi(vip$a)vipoj>"
-" command SqlToString exec "normal vipI'vip$A 'vip>Ireturn wi(vip$a)vipoj>"
+
+let printPython = "yiwoprint('0: ', 0)"
+
 
 
 
