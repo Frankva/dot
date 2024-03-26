@@ -364,7 +364,7 @@ let sqlToString = "vipI'vip$A 'vip>Ireturn wi(vip$a)vipoj>"
 
 let printPython = "yiwoprint('0: ', 0)"
 
-
+let consolelog = 'yiwoconsole.log(''"'', ");'
 
 
 
