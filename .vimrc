@@ -206,7 +206,11 @@ nnoremap <Space>gb q:gg"_dG:r!git branch -a<CR>:resize<CR>o!git checkout
 nnoremap <Space>gB :!git blame '%'<CR>
 " nnoremap <Space>gg :!clear&&git status<CR>
 nnoremap <Space>ggg :!clear&&git status --show-stash&&git add --interactive<CR>
-nnoremap <Space>ggp :!git push<CR>
+"nnoremap <Space>ggp :!git push<CR>
+nnoremap <Space>gp :!git push<CR>
+nnoremap <Space>ggF :!git pull<CR>
+nnoremap <Space>gF :!git fetch<CR>
+"nnoremap <Space>ggF :!git pull<CR>
  
 nnoremap <Space>gcr q:i!git init ./
 nnoremap <Space>gcR q:i!git clone <C-[>
@@ -365,6 +369,5 @@ let sqlToString = "vipI'vip$A 'vip>Ireturn wi(vip$a)vipoj>"
 let printPython = "yiwoprint('0: ', 0)"
 
 let consolelog = 'yiwoconsole.log(''"'', ");'
-
 
 
