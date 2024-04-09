@@ -245,12 +245,21 @@ xnoremap S} <C-[>a}<C-[>gvo<C-[>i{<C-[>
 xnoremap S> <C-[>a><C-[>gvo<C-[>i<<C-[>
 xnoremap S< <C-[>i<<C-[>gvo<C-[>la><C-[>
 
+nnoremap ds" va"<c-[>"_dlgvo<c-[>"_dl
+nnoremap ds( va(<c-[>"_dlgvo<c-[>"_dl
+nnoremap ds) va(<c-[>"_dlgvo<c-[>"_dl
+
 " xnoremap v "ty/<C-R>t<CR>
 nnoremap <Space>fs :w<CR>
 nnoremap <Space>fS :w 
 let copyFile = 'mto%vT/y"_dd''t'
 nnoremap <Space>fy @=copyFile<CR>
 nnoremap <Space>fE :tabedit ~/.vimrc<CR>
+
+
+nnoremap <Space>gv `[v`]
+onoremap <silent> im :<C-U>normal k]MV[m<CR>
+xnoremap im :<C-U>normal k]MV[m<CR>
 
 inoremap <C-[> <C-[><C-[>
 xnoremap <C-[> <C-[><C-[>
