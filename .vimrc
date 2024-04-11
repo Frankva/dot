@@ -248,6 +248,20 @@ nnoremap ds" va"<c-[>"_dlgvo<c-[>"_dl
 nnoremap ds( va(<c-[>"_dlgvo<c-[>"_dl
 nnoremap ds) va(<c-[>"_dlgvo<c-[>"_dl
 
+function Vst(tag)
+    execute 'normal `>a</' . a:tag .'>`<i<' . a:tag . '>'
+endfunction
+xnoremap St <C-[>:call Vst('')<left><left>
+nnoremap ysiwt viw<C-[>:call Vst('')<left><left>
+nnoremap dst vatda<`<da<
+nnoremap cst" vatca<"`<ca<"
+nnoremap cst' vatca<'`<ca<'
+function Cstt(tag)
+    execute'normal vatci</' . a:tag . '`<ci<'. a:tag .''
+endfunction
+nnoremap cstt <C-[>:call Cstt('')<left><left>
+
+
 " xnoremap v "ty/<C-R>t<CR>
 nnoremap <Space>fs :w<CR>
 nnoremap <Space>fS :w 
