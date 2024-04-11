@@ -231,31 +231,55 @@ xnoremap <Space>hrr :!reset<CR>
 let testfilecommand="!python '%' "
 nnoremap <Space>ft :<C-R>=testfilecommand<cr><cr>
 
-xnoremap S<Space> <C-[>a <C-[>gvo<C-[>i <C-[>
-xnoremap S` <C-[>a`<C-[>gvo<C-[>i`<C-[>
-xnoremap S' <C-[>a'<C-[>gvo<C-[>i'<C-[>
-xnoremap S" <C-[>a"<C-[>gvo<C-[>i"<C-[>
-xnoremap S( <C-[>i(<C-[>gvo<C-[>la)<C-[>
-xnoremap S) <C-[>a)<C-[>gvo<C-[>i(<C-[>
-xnoremap S[ <C-[>i[<C-[>gvo<C-[>la]<C-[>
-xnoremap S] <C-[>a]<C-[>gvo<C-[>i[<C-[>
+xnoremap S<Space> <C-[>`<i <C-[>`>la <C-[>
+xnoremap S` <C-[>`<i`<C-[>`>la`<C-[>
+xnoremap S' <C-[>`<i'<C-[>`>la'<C-[>
+xnoremap S" <C-[>`<i"<C-[>`>la"<C-[>
+xnoremap S( <C-[>`<i( <C-[>`>lla )<C-[>`<
+xnoremap S) <C-[>`<i(<C-[>`>la)<C-[>`<
+xnoremap S[ <C-[>`<i[ <C-[>`>lla ]<C-[>`<
+xnoremap S] <C-[>`<i[<C-[>`>la]<C-[>`<
 xnoremap S{ <C-[>`<i{ <C-[>`>lla }<C-[>`<
 xnoremap S} <C-[>`<i{<C-[>`>la}<C-[>`<
-xnoremap S> <C-[>a><C-[>gvo<C-[>i<<C-[>
-xnoremap S< <C-[>i<<C-[>gvo<C-[>la><C-[>
+xnoremap S< <C-[>`<i< <C-[>`>lla ><C-[>`<
+xnoremap S> <C-[>`<i<<C-[>`>la><C-[>`<
 
+
+nnoremap ds` vi`<c-[>l"_x`<h"_x
+nnoremap ds' vi'<c-[>l"_x`<h"_x
 nnoremap ds" vi"<c-[>l"_x`<h"_x
 nnoremap ds( va(<c-[>"_x`<<c-[>"_x
 nnoremap ds) va(<c-[>"_x`<<c-[>"_x
+nnoremap ds[ va[<c-[>"_x`<<c-[>"_x
+nnoremap ds] va[<c-[>"_x`<<c-[>"_x
+nnoremap ds{ va{<c-[>"_x`<<c-[>"_x
+nnoremap ds} va{<c-[>"_x`<<c-[>"_x
+nnoremap ds< va<<c-[>"_x`<<c-[>"_x
+nnoremap ds> va<<c-[>"_x`<<c-[>"_x
+
+nnoremap ysiw` viw<c-[>a`<c-[>`<i`<c-[>
+nnoremap ysiw' viw<c-[>a'<c-[>`<i'<c-[>
+nnoremap ysiw" viw<c-[>a"<c-[>`<i"<c-[>
+nnoremap ysiw( viw<c-[>a )<c-[>`<i( <c-[>
+nnoremap ysiw) viw<c-[>a)<c-[>`<i(<c-[>
+nnoremap ysiw[ viw<c-[>a ]<c-[>`<i[ <c-[>
+nnoremap ysiw] viw<c-[>a]<c-[>`<i[<c-[>
+nnoremap ysiw{ viw<c-[>a }<c-[>`<i{ <c-[>
+nnoremap ysiw} viw<c-[>a}<c-[>`<i{<c-[>
+nnoremap ysiw< viw<c-[>a ><c-[>`<i< <c-[>
+nnoremap ysiw> viw<c-[>a><c-[>`<i<<c-[>
+
+nnoremap cs'" vi'<c-[>lr"`<hr"
+nnoremap cs"' vi"<c-[>lr'`<hr'
 
 function Vst(tag)
     execute 'normal `>a</' . a:tag .'>`<i<' . a:tag . '>'
 endfunction
 xnoremap St <C-[>:call Vst('')<left><left>
 nnoremap ysiwt viw<C-[>:call Vst('')<left><left>
-nnoremap dst vatda<`<da<
-nnoremap cst" vatca<"`<ca<"
-nnoremap cst' vatca<'`<ca<'
+nnoremap dst vat<C-[>da<`<da<
+nnoremap cst" vat<C-[>ca<"<C-[>`<ca<<C-[>"
+nnoremap cst' vat<C-[>ca<'<C-[>`<ca<<C-[>'
 function Cstt(tag)
     execute'normal vatci</' . a:tag . '`<ci<'. a:tag .''
 endfunction
@@ -391,5 +415,4 @@ let sqlToString = "vipI'vip$A 'vip>Ireturn wi(vip$a)vipoj>"
 let printPython = "yiwoprint('0: ', 0)"
 
 let consolelog = 'yiwoconsole.log(''"'', ");'
-
 
