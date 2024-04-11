@@ -239,8 +239,8 @@ xnoremap S( <C-[>i(<C-[>gvo<C-[>la)<C-[>
 xnoremap S) <C-[>a)<C-[>gvo<C-[>i(<C-[>
 xnoremap S[ <C-[>i[<C-[>gvo<C-[>la]<C-[>
 xnoremap S] <C-[>a]<C-[>gvo<C-[>i[<C-[>
-xnoremap S{ <C-[>i{<C-[>gvo<C-[>la}<C-[>
-xnoremap S} <C-[>a}<C-[>gvo<C-[>i{<C-[>
+xnoremap S{ <C-[>`<i{ <C-[>`>lla }<C-[>`<
+xnoremap S} <C-[>`<i{<C-[>`>la}<C-[>`<
 xnoremap S> <C-[>a><C-[>gvo<C-[>i<<C-[>
 xnoremap S< <C-[>i<<C-[>gvo<C-[>la><C-[>
 
@@ -251,7 +251,7 @@ nnoremap ds) va(<c-[>"_dlgvo<c-[>"_dl
 " xnoremap v "ty/<C-R>t<CR>
 nnoremap <Space>fs :w<CR>
 nnoremap <Space>fS :w 
-let copyFile = 'mto%vT/y"_dd''t'
+let copyFile = 'mto/%vT/y"_dd''t'
 nnoremap <Space>fy @=copyFile<CR>
 nnoremap <Space>fE :tabedit ~/.vimrc<CR>
 
@@ -317,7 +317,7 @@ set ttimeout
 set ttyfast
 
 set keywordprg=man
-nnoremap K :!zeal "<cword>" > /dev/null &<CR><CR>
+nnoremap K :!zeal -f "<cword>" > /dev/null &<CR><CR>
 
 " set keywordprg=xdg-open\ https://devdocs.io/\\#q=\
 " set keywordprg=start\ firefox\ https://devdocs.io/\\#q=\
