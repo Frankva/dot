@@ -58,8 +58,8 @@ set wop="pum,tagfile"
 
 nnoremap Y y$
 
-" like neovim P, do not use on endline 
-xnoremap P "_dP
+" like neovim P, (do not use on endline, almost fix)
+xnoremap P <C-[>a <c-[>gv"_dPl"_xh
 
 " center when
 nnoremap n nzz
