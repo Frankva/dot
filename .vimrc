@@ -244,9 +244,9 @@ xnoremap S} <C-[>`<i{<C-[>`>la}<C-[>`<
 xnoremap S> <C-[>a><C-[>gvo<C-[>i<<C-[>
 xnoremap S< <C-[>i<<C-[>gvo<C-[>la><C-[>
 
-nnoremap ds" va"<c-[>"_dlgvo<c-[>"_dl
-nnoremap ds( va(<c-[>"_dlgvo<c-[>"_dl
-nnoremap ds) va(<c-[>"_dlgvo<c-[>"_dl
+nnoremap ds" vi"<c-[>l"_x`<h"_x
+nnoremap ds( va(<c-[>"_x`<<c-[>"_x
+nnoremap ds) va(<c-[>"_x`<<c-[>"_x
 
 function Vst(tag)
     execute 'normal `>a</' . a:tag .'>`<i<' . a:tag . '>'
