@@ -1,6 +1,6 @@
 set nocompatible        " use vim defaults
 set scrolloff=4         " keep n lines when scrolling
-set ai                  " set auto-indenting on for programming
+set ai                  " set auto-indenting on for programming, autoindent
 
 set showcmd             " display incomplete commands
 set nobackup            " do not keep a backup file
@@ -11,10 +11,8 @@ set hlsearch            " highlight searches
 set incsearch           " do incremental searching
 set showmatch           " jump to matches when entering regexp
 
-"set ignorecase          " ignore case when searching
-set ic
-" set smartcase           " no ignorecase if Uppercase char present
-" set scs!
+"set ignorecase          " ic ignore case when searching
+" set smartcase           " scs no ignorecase if Uppercase char present
 
 set visualbell t_vb=    " turn off error beep/flash
 set novisualbell        " turn off visual bell
@@ -29,7 +27,7 @@ filetype indent on      " load indent file for specific file type
 
 set t_RV=               " http://bugs.debian.org/608242, http://groups.google.com/group/vim_dev/browse_thread/thread/9770ea844cec3282
 
-set rnu
+set rnu "relativenumber
 " colorscheme default
 
 
@@ -41,24 +39,24 @@ set softtabstop=-1
 
 set expandtab " set et,  set noet
 set hidden
-set ls=2
+set ls=2 "laststatus
 set autoread
-set nolrm
+set nolrm "nolangremap
 set mouse=nvi
 set mousem="popup_setpos"
-set nf="bin,hex"
+set nf="bin,hex" "nrformats
 set sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,terminal"
-set nosol
+set nosol "nostartofline
 " set tags="./tags;,tags"
 set tags=tags
-set tf
-set wmnu
-set wop="pum,tagfile"
+set tf "ttyfast
+set wmnu "wildmenu
+set wop="pum,tagfile" "wildoptions
 
 
 nnoremap Y y$
 
-" like neovim P
+" like neovim PA " not needed since vim 9 it is the default
 xnoremap P <C-[>a <c-[>gv"_dPa<delete><c-[>
 
 " center when
@@ -159,6 +157,10 @@ nnoremap <Space><C-I>n :tabnew<CR>
 nnoremap <Space><Tab>n :tabnew<CR>
 nnoremap <Space><C-I>v :tabedit %<CR>
 nnoremap <Space><Tab>v :tabedit %<CR>
+nnoremap <Space><Tab>s :tabedit %<CR>
+nnoremap <Space><c-i>s :tabedit %<CR>
+nnoremap <Space><Tab><Tab> :tabedit %<CR>
+nnoremap <Space><c-i><c-i> :tabedit %<CR>
 nnoremap <Space>of <Cmd>tabnew<CR><C-Tab>
 nnoremap <Space><C-I>d :tabclose<CR>
 nnoremap <Space><Tab>d :tabclose<CR>
@@ -235,11 +237,11 @@ xnoremap S<Space> <C-[>`<i <C-[>`>la <C-[>
 xnoremap S` <C-[>`<i`<C-[>`>la`<C-[>
 xnoremap S' <C-[>`<i'<C-[>`>la'<C-[>
 xnoremap S" <C-[>`<i"<C-[>`>la"<C-[>
-xnoremap S( <C-[>`<i( <C-[>`>lla )<C-[>`<
+xnoremap S( <C-[>`>a )<C-[>`<i) <C-[>`<
 xnoremap S) <C-[>`<i(<C-[>`>la)<C-[>`<
-xnoremap S[ <C-[>`<i[ <C-[>`>lla ]<C-[>`<
+xnoremap S[ <C-[>`>a ]<C-[>`<i[ <C-[>`<
 xnoremap S] <C-[>`<i[<C-[>`>la]<C-[>`<
-xnoremap S{ <C-[>`<i{ <C-[>`>lla }<C-[>`<
+xnoremap S{ <C-[>`>a }<C-[>`<i{ <C-[>`<
 xnoremap S} <C-[>`<i{<C-[>`>la}<C-[>`<
 xnoremap S< <C-[>`<i< <C-[>`>lla ><C-[>`<
 xnoremap S> <C-[>`<i<<C-[>`>la><C-[>`<
@@ -390,8 +392,8 @@ autocmd Filetype css setlocal tabstop=4 | setlocal et
 autocmd Filetype python setlocal tabstop=4 | setlocal et
 autocmd Filetype php setlocal tabstop=4 | setlocal et |
     \ set nospell
-autocmd Filetype htmldjango setlocal tabstop=2 | setlocal et
-autocmd Filetype html setlocal tabstop=2 | setlocal et
+autocmd Filetype htmldjango setlocal tabstop=2 | setlocal et | set indentexpr=
+autocmd Filetype html setlocal tabstop=2 | setlocal et | set indentexpr=
 autocmd Filetype jsp setlocal tabstop=2 | setlocal et
 autocmd Filetype javascript setlocal tabstop=2 | setlocal et
 autocmd Filetype make setlocal tabstop=4 | setlocal noet
@@ -415,4 +417,3 @@ let sqlToString = "vipI'vip$A 'vip>Ireturn wi(vip$a)vipoj>"
 let printPython = "yiwoprint('0: ', 0)"
 
 let consolelog = 'yiwoconsole.log(''"'', ");'
-
