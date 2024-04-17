@@ -11,7 +11,7 @@ set hlsearch            " highlight searches
 set incsearch           " do incremental searching
 set showmatch           " jump to matches when entering regexp
 
-"set ignorecase          " ic ignore case when searching
+set ignorecase          " ic ignore case when searching
 " set smartcase           " scs no ignorecase if Uppercase char present
 
 set visualbell t_vb=    " turn off error beep/flash
