@@ -401,6 +401,7 @@ autocmd Filetype java setlocal tabstop=4 | setlocal et
 autocmd Filetype pug setlocal tabstop=2 | setlocal et
 autocmd Filetype json setlocal tabstop=2 | setlocal et
 autocmd Filetype sh setlocal tabstop=4 | setlocal et | nnoremap K K
+autocmd Filetype arduino setlocal tabstop=2 | setlocal et
 " autocmd Filetype markdown setlocal spell | setlocal spelllang=fr
 
 
