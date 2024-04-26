@@ -237,7 +237,7 @@ xnoremap S<Space> <C-[>`<i <C-[>`>la <C-[>
 xnoremap S` <C-[>`<i`<C-[>`>la`<C-[>
 xnoremap S' <C-[>`<i'<C-[>`>la'<C-[>
 xnoremap S" <C-[>`<i"<C-[>`>la"<C-[>
-xnoremap S( <C-[>`>a )<C-[>`<i) <C-[>`<
+xnoremap S( <C-[>`>a )<C-[>`<i( <C-[>`<
 xnoremap S) <C-[>`<i(<C-[>`>la)<C-[>`<
 xnoremap S[ <C-[>`>a ]<C-[>`<i[ <C-[>`<
 xnoremap S] <C-[>`<i[<C-[>`>la]<C-[>`<
