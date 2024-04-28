@@ -243,7 +243,7 @@ xnoremap S[ <C-[>`>a ]<C-[>`<i[ <C-[>`<
 xnoremap S] <C-[>`<i[<C-[>`>la]<C-[>`<
 xnoremap S{ <C-[>`>a }<C-[>`<i{ <C-[>`<
 xnoremap S} <C-[>`<i{<C-[>`>la}<C-[>`<
-xnoremap S< <C-[>`<i< <C-[>`>lla ><C-[>`<
+" xnoremap S< <C-[>`<i< <C-[>`>lla ><C-[>`<
 xnoremap S> <C-[>`<i<<C-[>`>la><C-[>`<
 
 
@@ -256,7 +256,7 @@ nnoremap ds[ va[<c-[>"_x`<<c-[>"_x
 nnoremap ds] va[<c-[>"_x`<<c-[>"_x
 nnoremap ds{ va{<c-[>"_x`<<c-[>"_x
 nnoremap ds} va{<c-[>"_x`<<c-[>"_x
-nnoremap ds< va<<c-[>"_x`<<c-[>"_x
+" nnoremap ds< va<<c-[>"_x`<<c-[>"_x
 nnoremap ds> va<<c-[>"_x`<<c-[>"_x
 
 nnoremap ysiw` viw<c-[>a`<c-[>`<i`<c-[>
@@ -268,7 +268,7 @@ nnoremap ysiw[ viw<c-[>a ]<c-[>`<i[ <c-[>
 nnoremap ysiw] viw<c-[>a]<c-[>`<i[<c-[>
 nnoremap ysiw{ viw<c-[>a }<c-[>`<i{ <c-[>
 nnoremap ysiw} viw<c-[>a}<c-[>`<i{<c-[>
-nnoremap ysiw< viw<c-[>a ><c-[>`<i< <c-[>
+" nnoremap ysiw< viw<c-[>a ><c-[>`<i< <c-[>
 nnoremap ysiw> viw<c-[>a><c-[>`<i<<c-[>
 
 nnoremap cs'" vi'<c-[>lr"`<hr"
@@ -278,12 +278,17 @@ function Vst(tag)
     execute 'normal `>a</' . a:tag .'>`<i<' . a:tag . '>'
 endfunction
 xnoremap St <C-[>:call Vst('')<left><left>
+xnoremap S< <C-[>:call Vst('')<left><left>
 nnoremap ysiwt viw<C-[>:call Vst('')<left><left>
+nnoremap ysiw< viw<C-[>:call Vst('')<left><left>
 nnoremap dst vat<C-[>da<`<da<
+nnoremap ds< vat<C-[>da<`<da<
 nnoremap cst" vat<C-[>ca<"<C-[>`<ca<<C-[>"
+nnoremap cs<" vat<C-[>ca<"<C-[>`<ca<<C-[>"
 nnoremap cst' vat<C-[>ca<'<C-[>`<ca<<C-[>'
+nnoremap cs<' vat<C-[>ca<'<C-[>`<ca<<C-[>'
 function Cstt(tag)
-    execute'normal vatci</' . a:tag . '`<ci<'. a:tag .''
+    execute'normal vatci</' . a:tag . '`<lciw'. a:tag .''
 endfunction
 nnoremap cstt <C-[>:call Cstt('')<left><left>
 
