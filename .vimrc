@@ -67,6 +67,7 @@ nnoremap <C-D> <C-D>zz
 if ! has('win32')| set guifont=Fira\ Code\ 14 | endif
 if has('win32')| set guifont=Fira_code:h14:cANSI:qDRAFT | endif
 set guiligatures=!\"#$%&()*+-./:<=>?@[]^_{\|~><
+set guioptions=0
 set renderoptions=type:directx
 set encoding=utf-8
 
@@ -155,12 +156,13 @@ nnoremap <Space>tr :set readonly!<CR>
 nnoremap <Space>tw :set wrap!<CR>
 nnoremap <Space><C-I>n :tabnew<CR>
 nnoremap <Space><Tab>n :tabnew<CR>
-nnoremap <Space><C-I>v :tabedit %<CR>
-nnoremap <Space><Tab>v :tabedit %<CR>
-nnoremap <Space><Tab>s :tabedit %<CR>
-nnoremap <Space><c-i>s :tabedit %<CR>
-nnoremap <Space><Tab><Tab> :tabedit %<CR>
-nnoremap <Space><c-i><c-i> :tabedit %<CR>
+let duplicatenewtab = 'vT'
+nnoremap <Space><C-I>v @=duplicatenewtab<CR>
+nnoremap <Space><Tab>v @=duplicatenewtab<CR>
+nnoremap <Space><Tab>s @=duplicatenewtab<CR>
+nnoremap <Space><C-I>s @=duplicatenewtab<CR>
+nnoremap <Space><Tab><Tab> @=duplicatenewtab<CR>
+nnoremap <Space><C-I><C-I> @=duplicatenewtab<CR>
 nnoremap <Space>of <Cmd>tabnew<CR><C-Tab>
 nnoremap <Space><C-I>d :tabclose<CR>
 nnoremap <Space><Tab>d :tabclose<CR>
@@ -329,6 +331,17 @@ let g:netrw_browsex_viewer= "xdg-open"
 
 " map <Space> <Leader>
 " set shell=C:\Program\ Files\Git\bin\bash
+" Check if running on Windows
+
+if has('win32') || has('win64')
+    " Use Bash for :ter and :! commands on Windows
+    set shell=\"C:\\Program\ Files\\Git\\bin\\bash.exe\"
+    set shellcmdflag=-c
+    set shellquote=
+    set shellxquote=\"
+endif
+" gvim -c ter -c on
+
 
 let g:netrw_keepdir = 1 " 1 is the default keep current
 let g:netrw_localcopydircmd = 'cp -r'
