@@ -67,11 +67,13 @@ nnoremap <C-D> <C-D>zz
 if ! has('win32')| set guifont=Fira\ Code\ 14 | endif
 if has('win32')| set guifont=Fira_code:h14:cANSI:qDRAFT | endif
 set guiligatures=!\"#$%&()*+-./:<=>?@[]^_{\|~><
-set guioptions=0
+set guioptions=
 set renderoptions=type:directx
 set encoding=utf-8
 
 set colorcolumn=80,120
+
+nnoremap Q gq
 
 " neovim remap test
 nnoremap <C-L> <Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>
@@ -327,6 +329,9 @@ endfunction
 
 let g:netrw_browsex_viewer= "xdg-open"
 
+if has('win32') || has('win64')
+    let g:netrw_browsex_viewer= "open"
+endif
 " end remap netrw
 
 " map <Space> <Leader>
