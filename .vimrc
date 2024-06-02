@@ -99,7 +99,9 @@ xnoremap <Space>p "+p
 nnoremap <Space><C-I><Space> <Cmd>Tex<CR>
 nnoremap <Space><Tab><Space> <Cmd>Tex<CR>
 
-let g:netrw_fastbrowse=2
+" let g:netrw_fastbrowse=2 not reload
+let g:netrw_fastbrowse=0 " reload the list
+
 " nnoremap <Space><Space> :Explore<CR><C-6>:Rexplore<CR>
 nnoremap <Space><Space> <Cmd>Explore<CR>
 
