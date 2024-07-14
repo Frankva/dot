@@ -1,21 +1,21 @@
 set nocompatible        " use vim defaults
-set scrolloff=4         " keep n lines when scrolling
+set scrolloff=0         " keep n lines when scrolling
 set ai                  " set auto-indenting on for programming, autoindent
 
 set showcmd             " display incomplete commands
-set nobackup            " do not keep a backup file
+" set nobackup            " do not keep a backup file
 set number              " show line numbers
 set ruler               " show the current row and column
 
-set hlsearch            " highlight searches
-set incsearch           " do incremental searching
+set hlsearch            " highlight searches hls
+set incsearch           " do incremental searching is
 set showmatch           " jump to matches when entering regexp
 
 set ignorecase          " ic ignore case when searching
 " set smartcase           " scs no ignorecase if Uppercase char present
 
 set visualbell t_vb=    " turn off error beep/flash
-set novisualbell        " turn off visual bell
+" set novisualbell        " turn off visual bell
 
 set backspace=indent,eol,start  " make that backspace key work the way it should
 set runtimepath=$VIMRUNTIME     " turn off user scripts, https://github.com/igrigorik/vimgolf/issues/129
@@ -30,8 +30,14 @@ set t_RV=               " http://bugs.debian.org/608242, http://groups.google.co
 set rnu "relativenumber
 " colorscheme default
 
+set showmode " smd
 
-"
+set backup
+set backupdir=~/backupdir
+set patchmode=.orig
+
+set nowrapscan " stop search at the end of the file nows ws
+
 " just change ts when there is other size tab like JS is 2, py is 4
 set tabstop=4 " set ts=4
 set shiftwidth=0
@@ -64,16 +70,13 @@ nnoremap n nzz
 nnoremap N Nzz
 nnoremap <C-U> <C-U>zz
 nnoremap <C-D> <C-D>zz
-if ! has('win32')| set guifont=Fira\ Code\ 14 | endif
-if has('win32')| set guifont=Fira_code:h14:cANSI:qDRAFT | endif
+" if ! has('win32')| set guifont=Fira\ Code\ 14 | endif
+" if has('win32')| set guifont=Fira_code:h14:cANSI:qDRAFT | endif
 set guiligatures=!\"#$%&()*+-./:<=>?@[]^_{\|~><
-set guioptions=
 set renderoptions=type:directx
 set encoding=utf-8
 
 set colorcolumn=80,120
-
-nnoremap Q gq
 
 " neovim remap test
 nnoremap <C-L> <Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>
@@ -99,9 +102,7 @@ xnoremap <Space>p "+p
 nnoremap <Space><C-I><Space> <Cmd>Tex<CR>
 nnoremap <Space><Tab><Space> <Cmd>Tex<CR>
 
-" let g:netrw_fastbrowse=2 not reload
-let g:netrw_fastbrowse=0 " reload the list
-
+let g:netrw_fastbrowse=2
 " nnoremap <Space><Space> :Explore<CR><C-6>:Rexplore<CR>
 nnoremap <Space><Space> <Cmd>Explore<CR>
 
@@ -146,7 +147,7 @@ nnoremap <Space>b[ :bp<CR>
 nnoremap <Space>bl :blast<CR>
 nnoremap <Space>bS :wa<CR>
 nnoremap <Space>bs :w<CR>
-if ! has('win32') | nnoremap <Space>bu :w !sudo tee % <CR>| endif
+if ! has('win32') | nnoremap <Space>bu :w! !sudo tee % <CR>| endif
 
 nnoremap <Space>qq :qa<CR>
 nnoremap <Space>qQ :qa!<CR>
@@ -160,13 +161,12 @@ nnoremap <Space>tr :set readonly!<CR>
 nnoremap <Space>tw :set wrap!<CR>
 nnoremap <Space><C-I>n :tabnew<CR>
 nnoremap <Space><Tab>n :tabnew<CR>
-let duplicatenewtab = 'vT'
-nnoremap <Space><C-I>v @=duplicatenewtab<CR>
-nnoremap <Space><Tab>v @=duplicatenewtab<CR>
-nnoremap <Space><Tab>s @=duplicatenewtab<CR>
-nnoremap <Space><C-I>s @=duplicatenewtab<CR>
-nnoremap <Space><Tab><Tab> @=duplicatenewtab<CR>
-nnoremap <Space><C-I><C-I> @=duplicatenewtab<CR>
+nnoremap <Space><C-I>v :tabedit %<CR>
+nnoremap <Space><Tab>v :tabedit %<CR>
+nnoremap <Space><Tab>s :tabedit %<CR>
+nnoremap <Space><c-i>s :tabedit %<CR>
+nnoremap <Space><Tab><Tab> :tabedit %<CR>
+nnoremap <Space><c-i><c-i> :tabedit %<CR>
 nnoremap <Space>of <Cmd>tabnew<CR><C-Tab>
 nnoremap <Space><C-I>d :tabclose<CR>
 nnoremap <Space><Tab>d :tabclose<CR>
@@ -331,24 +331,10 @@ endfunction
 
 let g:netrw_browsex_viewer= "xdg-open"
 
-if has('win32') || has('win64')
-    let g:netrw_browsex_viewer= "open"
-endif
 " end remap netrw
 
 " map <Space> <Leader>
 " set shell=C:\Program\ Files\Git\bin\bash
-" Check if running on Windows
-
-if has('win32') || has('win64')
-    " Use Bash for :ter and :! commands on Windows
-    set shell=\"C:\\Program\ Files\\Git\\bin\\bash.exe\"
-    set shellcmdflag=-c
-    set shellquote=
-    set shellxquote=\"
-endif
-" gvim -c ter -c on
-
 
 let g:netrw_keepdir = 1 " 1 is the default keep current
 let g:netrw_localcopydircmd = 'cp -r'
