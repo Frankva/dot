@@ -15,7 +15,7 @@ set ignorecase          " ic ignore case when searching
 " set smartcase           " scs no ignorecase if Uppercase char present
 
 set visualbell t_vb=    " turn off error beep/flash
-" set novisualbell        " turn off visual bell
+set novisualbell        " turn off visual bell
 
 set backspace=indent,eol,start  " make that backspace key work the way it should
 set runtimepath=$VIMRUNTIME     " turn off user scripts, https://github.com/igrigorik/vimgolf/issues/129
@@ -34,9 +34,10 @@ set showmode " smd
 
 set backup
 set backupdir=~/backupdir
-set patchmode=.orig
+" set patchmode=.orig
 
-set nowrapscan " stop search at the end of the file nows ws
+"set nowrapscan " stop search at the end of the file nows ws
+set wrapscan
 
 " just change ts when there is other size tab like JS is 2, py is 4
 "
@@ -72,6 +73,9 @@ set wop="pum,tagfile" "wildoptions
 nnoremap Y y$
 nnoremap !b !!bash<c-m>
 nnoremap !t :.terminal ++noclose ++curwin<c-m>
+xnoremap != "tygvs<c-r>=<c-r>t<c-m><c-[>
+nnoremap != "tcc<c-r>=<c-r>t<c-h><c-m><c-[>
+
 " like neovim PA " not needed since vim 9 it is the default
 xnoremap P <C-[>a <c-[>gv"_dPa<delete><c-[>
 
@@ -80,15 +84,20 @@ nnoremap n nzz
 nnoremap N Nzz
 nnoremap <C-U> <C-U>zz
 nnoremap <C-D> <C-D>zz
-" if ! has('win32')| set guifont=Fira\ Code\ 14 | endif
-" if has('win32')| set guifont=Fira_code:h14:cANSI:qDRAFT | endif
+
+if ! has('win32')| set guifont=Fira\ Code\ 14 | endif
+if has('win32')| set guifont=Fira_code:h14:cANSI:qDRAFT | endif
 set guiligatures=!\"#$%&()*+-./:<=>?@[]^_{\|~><
+set guioptions=
+" set guioptions-=m
+" set guioptions-=T
+" set guioptions-=r
 set renderoptions=type:directx
 set encoding=utf-8
 
 set colorcolumn=80,120
 
-" neovim remap test
+" neovim remap
 nnoremap <C-L> <Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>
 inoremap <C-U> <C-G>u<C-U>
 inoremap <C-W> <C-G>u<C-W>
@@ -231,7 +240,12 @@ nnoremap <Space>cx :copen<CR>
 nnoremap <Space>op :Lexplore<CR>
 
 nnoremap <Space>gcc :!git commit<CR>
-nnoremap <Space>gb q:gg"_dG:r!git branch -a<CR>:resize<CR>o!git checkout 
+let gitcheckout = ':terminal
+:resize
+git branch -l
+git checkout 		'
+nnoremap <space>gb @=gitcheckout<c-m>
+" nnoremap <Space>gb q:gg"_dG:r!git branch -a<CR>:resize<CR>o!git checkout 
 " nnoremap <Space>gb :!git branch -a && bash<CR>git t checkout checkout 
 nnoremap <Space>gB :!git blame '%'<CR>
 " nnoremap <Space>gg :!clear&&git status<CR>
@@ -371,9 +385,9 @@ let g:netrw_banner = 0
 " let g:netrw_altv = 1
 
 
-set omnifunc=syntaxcomplete#Complete
+" set omnifunc=syntaxcomplete#Complete
 " the default si : set complete=.,w,b,u,t,i
-set complete=.,w,b,u,i
+set complete=.
 set noswapfile
 set nowrap
 
@@ -467,3 +481,5 @@ set gp=git\ grep\ -n
 " set omnifunc=ale#completion#OmniFunc
 " nnoremap gh :ALEHover<c-m>
 " xnoremap gh :ALEHover<c-m>
+
+
