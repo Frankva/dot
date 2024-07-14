@@ -6,7 +6,11 @@ dotfiles and config file
 == git command ==
 [source,bash]
 ----
-git config user.email "email"
-git config user.name "username"
+git config user.email 'email'
+git config user.name 'username'
+git config --global credential.helper store
+git config --global credential.username 'username'
+git config --global credential.helper "store --file ~/.git-credentials"
+
 git push https://github.com/… namebranchlocal:namebranchremote
 ----
