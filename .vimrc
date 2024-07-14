@@ -39,11 +39,20 @@ set patchmode=.orig
 set nowrapscan " stop search at the end of the file nows ws
 
 " just change ts when there is other size tab like JS is 2, py is 4
+"
+" Number of visual spaces per TAB
 set tabstop=4 " set ts=4
+" Number of spaces indented when reindent operations (>> and <<) are used
+" if 0 that tabstop value
 set shiftwidth=0
+" Number of spaces in TAB when editing
 set softtabstop=-1
 
+" Convert TABs to spaces
 set expandtab " set et,  set noet
+" Enable intelligent tabbing and spacing for indentation and alignment
+set smarttab
+
 set hidden
 set ls=2 "laststatus
 set autoread
@@ -61,7 +70,8 @@ set wop="pum,tagfile" "wildoptions
 
 
 nnoremap Y y$
-
+nnoremap !b !!bash<c-m>
+nnoremap !t :.terminal ++noclose ++curwin<c-m>
 " like neovim PA " not needed since vim 9 it is the default
 xnoremap P <C-[>a <c-[>gv"_dPa<delete><c-[>
 
@@ -116,10 +126,22 @@ nnoremap <Space>j <cmd>lnext<CR>zz
 nnoremap <Space>k <cmd>lprev<CR>zz
 nnoremap <Space>ss :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left><C-f>
 xnoremap <Space>ss "ty:%s/<C-r>t/<C-r>t/gI<Left><Left><Left><C-f>
-nnoremap <Space>/ :lvimgrep! "\<<C-r><C-w>\>" ./*/**\|lopen<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><C-f>
-xnoremap <Space>/ "ty:lvimgrep! '<C-r>t' ./*/**\|lopen<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><C-f>
-nnoremap <Space>sp :lvimgrep! "\<<C-r><C-w>\>" ./*/**\|lopen<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><C-f>
-xnoremap <Space>sp "ty:lvimgrep! '<C-r>t' ./*/**\|lopen<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><C-f>
+
+let searchgrep = ':lvimgrep! '''' ./*/**\|lopen10h'
+nnoremap <space>/ @=searchgrep<c-m>
+nnoremap <space>sd @=searchgrep<c-m>
+
+
+let xsearchgrep = '"ty:lvimgrep! ''t'' ./*/**\|lopen10h'
+xnoremap <space>/ @=xsearchgrep<c-m>
+xnoremap <space>sd @=xsearchgrep<c-m>
+
+let searchgrepprojet = ':lgrep ''''\| lopen8hi'
+nnoremap <Space>sp @=searchgrepprojet<c-m>
+
+let xsearchgrepprojet = '"ty:lgrep ''t''\| lopen8hi'
+xnoremap <Space>sp @=xsearchgrepprojet<c-m>
+
 " nnoremap <Space>p :n %/**/**<Left>
 " nnoremap <Space>p :n ./**/**<Left>
 " nnoremap <Space><C-P> q:ie **/*
@@ -214,6 +236,7 @@ nnoremap <Space>gb q:gg"_dG:r!git branch -a<CR>:resize<CR>o!git checkout
 nnoremap <Space>gB :!git blame '%'<CR>
 " nnoremap <Space>gg :!clear&&git status<CR>
 nnoremap <Space>ggg :!clear&&git status --show-stash&&git add --interactive<CR>
+" nnoremap <Space>ggg :!clear&&git status --show-stash&&git commit --interactive<CR>
 nnoremap <Space>ggp :!git push<CR>
 nnoremap <Space>gp :!git push<CR>
 nnoremap <Space>ggF :!git pull<CR>
@@ -233,6 +256,8 @@ xnoremap <Space>iF "%p
 let insertFileName = 'm''o%vT/"ty"_dd"tp'
 nnoremap <Space>if @=insertFileName<CR>
 xnoremap <Space>if <C-[>o<C-R>%a<C-[>"tyT/"_ddgv"tp
+nnoremap <Space>id i<c-r>=strftime("%Y%m%d%H%M%S")<c-m><c-[>
+
 nnoremap <Space>hrr :!reset<CR>
 xnoremap <Space>hrr :!reset<CR>
 
@@ -429,3 +454,16 @@ let sqlToString = "vipI'vip$A 'vip>Ireturn wi(vip$a)vipoj>"
 let printPython = "yiwoprint('0: ', 0)"
 
 let consolelog = 'yiwoconsole.log(''"'', ");'
+
+
+
+" try | Rex | catch /^Vim\%((\a\+)\)\=:E492:/ | E | endtry
+" try | Rex | catch /.*/ | E | endtry
+
+set gp=git\ grep\ -n
+
+" let g:ale_set_loclist = 0
+" let g:ale_set_quickfix = 0
+" set omnifunc=ale#completion#OmniFunc
+" nnoremap gh :ALEHover<c-m>
+" xnoremap gh :ALEHover<c-m>
