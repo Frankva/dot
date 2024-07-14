@@ -123,12 +123,22 @@ nnoremap <Space>j <cmd>lnext<CR>zz
 nnoremap <Space>k <cmd>lprev<CR>zz
 nnoremap <Space>ss :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left><C-f>
 xnoremap <Space>ss "ty:%s/<C-r>t/<C-r>t/gI<Left><Left><Left><C-f>
-nnoremap <Space>/ :lvimgrep! '<C-r><C-w>' ./*/**\|lopen<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><C-f>
-xnoremap <Space>/ "ty:lvimgrep! '<C-r>t' ./*/**\|lopen<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><C-f>
-nnoremap <Space>sd :lvimgrep! '<C-r><C-w>' ./*/**\|lopen<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><C-f>
-xnoremap <Space>sd "ty:lvimgrep! '<C-r>t' ./*/**\|lopen<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><C-f>
-nnoremap <Space>sp :lgrep '<c-r><c-w>'\| lopen<Left><Left><Left><Left><Left><Left><Left><Left><c-f>i
-xnoremap <Space>sp "ty:lgrep '<c-r>t'\| lopen<Left><Left><Left><Left><Left><Left><Left><Left><c-f>i
+
+let searchgrep = ':lvimgrep! '''' ./*/**\|lopen10h'
+nnoremap <space>/ @=searchgrep<c-m>
+nnoremap <space>sd @=searchgrep<c-m>
+
+
+let xsearchgrep = '"ty:lvimgrep! ''t'' ./*/**\|lopen10h'
+xnoremap <space>/ @=xsearchgrep<c-m>
+xnoremap <space>sd @=xsearchgrep<c-m>
+
+let searchgrepprojet = ':lgrep ''''\| lopen8hi'
+nnoremap <Space>sp @=searchgrepprojet<c-m>
+
+let xsearchgrepprojet = '"ty:lgrep ''t''\| lopen8hi'
+xnoremap <Space>sp @=xsearchgrepprojet<c-m>
+
 " nnoremap <Space>p :n %/**/**<Left>
 " nnoremap <Space>p :n ./**/**<Left>
 " nnoremap <Space><C-P> q:ie **/*
@@ -461,12 +471,11 @@ let consolelog = 'yiwoconsole.log(''"'', ");'
 
 " try | Rex | catch /^Vim\%((\a\+)\)\=:E492:/ | E | endtry
 " try | Rex | catch /.*/ | E | endtry
-"
 
 set gp=git\ grep\ -n
-let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 0
-set omnifunc=ale#completion#OmniFunc
-nnoremap gh :ALEHover<c-m>
-xnoremap gh :ALEHover<c-m>
 
+" let g:ale_set_loclist = 0
+" let g:ale_set_quickfix = 0
+" set omnifunc=ale#completion#OmniFunc
+" nnoremap gh :ALEHover<c-m>
+" xnoremap gh :ALEHover<c-m>
