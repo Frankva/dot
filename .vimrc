@@ -1,14 +1,14 @@
 set nocompatible        " use vim defaults
-set scrolloff=0         " keep n lines when scrolling
+set scrolloff=4         " keep n lines when scrolling
 set ai                  " set auto-indenting on for programming, autoindent
 
 set showcmd             " display incomplete commands
-" set nobackup            " do not keep a backup file
+set nobackup            " do not keep a backup file
 set number              " show line numbers
 set ruler               " show the current row and column
 
-set hlsearch            " highlight searches hls
-set incsearch           " do incremental searching is
+set hlsearch            " highlight searches
+set incsearch           " do incremental searching
 set showmatch           " jump to matches when entering regexp
 
 set ignorecase          " ic ignore case when searching
@@ -27,33 +27,19 @@ filetype indent on      " load indent file for specific file type
 
 set t_RV=               " http://bugs.debian.org/608242, http://groups.google.com/group/vim_dev/browse_thread/thread/9770ea844cec3282
 
+set t_ti= t_te=
+
 set rnu "relativenumber
 " colorscheme default
 
-set showmode " smd
 
-set backup
-set backupdir=~/backupdir
-" set patchmode=.orig
-
-"set nowrapscan " stop search at the end of the file nows ws
-set wrapscan
-
-" just change ts when there is other size tab like JS is 2, py is 4
 "
-" Number of visual spaces per TAB
+" just change ts when there is other size tab like JS is 2, py is 4
 set tabstop=4 " set ts=4
-" Number of spaces indented when reindent operations (>> and <<) are used
-" if 0 that tabstop value
 set shiftwidth=0
-" Number of spaces in TAB when editing
 set softtabstop=-1
 
-" Convert TABs to spaces
 set expandtab " set et,  set noet
-" Enable intelligent tabbing and spacing for indentation and alignment
-set smarttab
-
 set hidden
 set ls=2 "laststatus
 set autoread
@@ -71,10 +57,6 @@ set wop="pum,tagfile" "wildoptions
 
 
 nnoremap Y y$
-nnoremap !b !!bash<c-m>
-nnoremap !t :.terminal ++noclose ++curwin<c-m>
-xnoremap != "tygvs<c-r>=<c-r>t<c-m><c-[>
-nnoremap != "tcc<c-r>=<c-r>t<c-h><c-m><c-[>
 
 " like neovim PA " not needed since vim 9 it is the default
 xnoremap P <C-[>a <c-[>gv"_dPa<delete><c-[>
@@ -84,20 +66,20 @@ nnoremap n nzz
 nnoremap N Nzz
 nnoremap <C-U> <C-U>zz
 nnoremap <C-D> <C-D>zz
-
 if ! has('win32')| set guifont=Fira\ Code\ 14 | endif
 if has('win32')| set guifont=Fira_code:h14:cANSI:qDRAFT | endif
 set guiligatures=!\"#$%&()*+-./:<=>?@[]^_{\|~><
 set guioptions=
-" set guioptions-=m
-" set guioptions-=T
-" set guioptions-=r
 set renderoptions=type:directx
 set encoding=utf-8
 
 set colorcolumn=80,120
 
-" neovim remap
+nnoremap Q gq
+nnoremap QQ gqgq
+vnoremap Q gq
+
+" neovim remap test
 nnoremap <C-L> <Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>
 inoremap <C-U> <C-G>u<C-U>
 inoremap <C-W> <C-G>u<C-W>
@@ -121,7 +103,9 @@ xnoremap <Space>p "+p
 nnoremap <Space><C-I><Space> <Cmd>Tex<CR>
 nnoremap <Space><Tab><Space> <Cmd>Tex<CR>
 
-let g:netrw_fastbrowse=2
+let g:netrw_fastbrowse=2 " not reload and alternative file (C-^) is netrw (like :Rex)
+" let g:netrw_fastbrowse=0 " reload the list and alternative file (C-^) is last text buffer
+
 " nnoremap <Space><Space> :Explore<CR><C-6>:Rexplore<CR>
 nnoremap <Space><Space> <Cmd>Explore<CR>
 
@@ -135,22 +119,10 @@ nnoremap <Space>j <cmd>lnext<CR>zz
 nnoremap <Space>k <cmd>lprev<CR>zz
 nnoremap <Space>ss :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left><C-f>
 xnoremap <Space>ss "ty:%s/<C-r>t/<C-r>t/gI<Left><Left><Left><C-f>
-
-let searchgrep = ':lvimgrep! '''' ./*/**\|lopen10h'
-nnoremap <space>/ @=searchgrep<c-m>
-nnoremap <space>sd @=searchgrep<c-m>
-
-
-let xsearchgrep = '"ty:lvimgrep! ''t'' ./*/**\|lopen10h'
-xnoremap <space>/ @=xsearchgrep<c-m>
-xnoremap <space>sd @=xsearchgrep<c-m>
-
-let searchgrepprojet = ':lgrep ''''\| lopen8hi'
-nnoremap <Space>sp @=searchgrepprojet<c-m>
-
-let xsearchgrepprojet = '"ty:lgrep ''t''\| lopen8hi'
-xnoremap <Space>sp @=xsearchgrepprojet<c-m>
-
+nnoremap <Space>/ :lvimgrep! "\<<C-r><C-w>\>" ./*/**\|lopen<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><C-f>
+xnoremap <Space>/ "ty:lvimgrep! '<C-r>t' ./*/**\|lopen<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><C-f>
+nnoremap <Space>sp :lvimgrep! "\<<C-r><C-w>\>" ./*/**\|lopen<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><C-f>
+xnoremap <Space>sp "ty:lvimgrep! '<C-r>t' ./*/**\|lopen<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><C-f>
 " nnoremap <Space>p :n %/**/**<Left>
 " nnoremap <Space>p :n ./**/**<Left>
 " nnoremap <Space><C-P> q:ie **/*
@@ -178,7 +150,7 @@ nnoremap <Space>b[ :bp<CR>
 nnoremap <Space>bl :blast<CR>
 nnoremap <Space>bS :wa<CR>
 nnoremap <Space>bs :w<CR>
-if ! has('win32') | nnoremap <Space>bu :w! !sudo tee % <CR>| endif
+if ! has('win32') | nnoremap <Space>bu :w !sudo tee % <CR>| endif
 
 nnoremap <Space>qq :qa<CR>
 nnoremap <Space>qQ :qa!<CR>
@@ -192,12 +164,13 @@ nnoremap <Space>tr :set readonly!<CR>
 nnoremap <Space>tw :set wrap!<CR>
 nnoremap <Space><C-I>n :tabnew<CR>
 nnoremap <Space><Tab>n :tabnew<CR>
-nnoremap <Space><C-I>v :tabedit %<CR>
-nnoremap <Space><Tab>v :tabedit %<CR>
-nnoremap <Space><Tab>s :tabedit %<CR>
-nnoremap <Space><c-i>s :tabedit %<CR>
-nnoremap <Space><Tab><Tab> :tabedit %<CR>
-nnoremap <Space><c-i><c-i> :tabedit %<CR>
+let duplicatenewtab = 'vT'
+nnoremap <Space><C-I>v @=duplicatenewtab<CR>
+nnoremap <Space><Tab>v @=duplicatenewtab<CR>
+nnoremap <Space><Tab>s @=duplicatenewtab<CR>
+nnoremap <Space><C-I>s @=duplicatenewtab<CR>
+nnoremap <Space><Tab><Tab> @=duplicatenewtab<CR>
+nnoremap <Space><C-I><C-I> @=duplicatenewtab<CR>
 nnoremap <Space>of <Cmd>tabnew<CR><C-Tab>
 nnoremap <Space><C-I>d :tabclose<CR>
 nnoremap <Space><Tab>d :tabclose<CR>
@@ -240,17 +213,11 @@ nnoremap <Space>cx :copen<CR>
 nnoremap <Space>op :Lexplore<CR>
 
 nnoremap <Space>gcc :!git commit<CR>
-let gitcheckout = ':terminal
-:resize
-git branch -l
-git checkout 		'
-nnoremap <space>gb @=gitcheckout<c-m>
-" nnoremap <Space>gb q:gg"_dG:r!git branch -a<CR>:resize<CR>o!git checkout 
+nnoremap <Space>gb q:gg"_dG:r!git branch -a<CR>:resize<CR>o!git checkout 
 " nnoremap <Space>gb :!git branch -a && bash<CR>git t checkout checkout 
 nnoremap <Space>gB :!git blame '%'<CR>
 " nnoremap <Space>gg :!clear&&git status<CR>
 nnoremap <Space>ggg :!clear&&git status --show-stash&&git add --interactive<CR>
-" nnoremap <Space>ggg :!clear&&git status --show-stash&&git commit --interactive<CR>
 nnoremap <Space>ggp :!git push<CR>
 nnoremap <Space>gp :!git push<CR>
 nnoremap <Space>ggF :!git pull<CR>
@@ -270,8 +237,6 @@ xnoremap <Space>iF "%p
 let insertFileName = 'm''o%vT/"ty"_dd"tp'
 nnoremap <Space>if @=insertFileName<CR>
 xnoremap <Space>if <C-[>o<C-R>%a<C-[>"tyT/"_ddgv"tp
-nnoremap <Space>id i<c-r>=strftime("%Y%m%d%H%M%S")<c-m><c-[>
-
 nnoremap <Space>hrr :!reset<CR>
 xnoremap <Space>hrr :!reset<CR>
 
@@ -368,12 +333,26 @@ function! NetrwMapping()
     noremap <buffer> X :cd % \| !explorer .<CR>
 endfunction
 
-let g:netrw_browsex_viewer= "xdg-open"
+" let g:netrw_browsex_viewer= "xdg-open"
 
+if has('win32') || has('win64')
+    let g:netrw_browsex_viewer= "open"
+endif
 " end remap netrw
 
 " map <Space> <Leader>
 " set shell=C:\Program\ Files\Git\bin\bash
+" Check if running on Windows
+
+if has('win32') || has('win64')
+    " Use Bash for :ter and :! commands on Windows
+    set shell=\"C:\\Program\ Files\\Git\\bin\\bash.exe\"
+    set shellcmdflag=-c
+    set shellquote=
+    set shellxquote=\"
+endif
+" gvim -c ter -c on
+
 
 let g:netrw_keepdir = 1 " 1 is the default keep current
 let g:netrw_localcopydircmd = 'cp -r'
@@ -387,6 +366,8 @@ let g:netrw_banner = 0
 
 " set omnifunc=syntaxcomplete#Complete
 " the default si : set complete=.,w,b,u,t,i
+" :h E535
+" set complete=.,w,b,u,i
 set complete=.
 set noswapfile
 set nowrap
@@ -436,7 +417,7 @@ command Diff exec ":!git diff '%'"
 command DiffMaster exec ":!git diff HEAD..master '%'"
 command DiffMain exec ":!git diff HEAD..main '%'"
 
-set efm=%m "errorformat
+"set efm=%m "errorformat
 " setlocal efm=Date:%m,P%m,F%m,N%m,%f:%l |
 autocmd Filetype css setlocal tabstop=4 | setlocal et
 autocmd Filetype python setlocal tabstop=4 | setlocal et
@@ -452,6 +433,7 @@ autocmd Filetype pug setlocal tabstop=2 | setlocal et
 autocmd Filetype json setlocal tabstop=2 | setlocal et
 autocmd Filetype sh setlocal tabstop=4 | setlocal et | nnoremap K K
 autocmd Filetype arduino setlocal tabstop=2 | setlocal et
+autocmd Filetype c setlocal tabstop=4 | setlocal et
 " autocmd Filetype markdown setlocal spell | setlocal spelllang=fr
 
 
@@ -470,16 +452,4 @@ let printPython = "yiwoprint('0: ', 0)"
 let consolelog = 'yiwoconsole.log(''"'', ");'
 
 
-
-" try | Rex | catch /^Vim\%((\a\+)\)\=:E492:/ | E | endtry
-" try | Rex | catch /.*/ | E | endtry
-
-set gp=git\ grep\ -n
-
-" let g:ale_set_loclist = 0
-" let g:ale_set_quickfix = 0
-" set omnifunc=ale#completion#OmniFunc
-" nnoremap gh :ALEHover<c-m>
-" xnoremap gh :ALEHover<c-m>
-
-
+set omnifunc=lsp#complete
