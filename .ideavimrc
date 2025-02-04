@@ -1,0 +1,136 @@
+" .ideavimrc is a configuration file for IdeaVim plugin. It uses
+"   the same commands as the original .vimrc configuration.
+" You can find a list of commands here: https://jb.gg/h38q75
+" Find more examples here: https://jb.gg/share-ideavimrc
+
+"" -- Suggested options --
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=5
+
+" Do incremental searching.
+set incsearch
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+Plug 'tpope/vim-surround'
+set NERDTree
+" set quickscope
+
+
+" Highlight copied text
+Plug 'machakann/vim-highlightedyank'
+" Commentary plugin
+Plug 'tpope/vim-commentary'
+
+
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+"" Map \r to the Reformat Code action
+"map \r <Action>(ReformatCode)
+
+"" Map <leader>d to start debug
+"map <leader>d <Action>(Debug)
+
+"" Map \b to toggle the breakpoint on the current line
+"map \b <Action>(ToggleLineBreakpoint)
+
+nnoremap <space>ig<space> :action Generate<c-m>
+nnoremap <space>igg :action GenerateGetter<c-m>
+nnoremap <space>igc :action GenerateConstructor<c-m>
+nnoremap <space>igo :action OverrideMethods<c-m>
+xnoremap <space>iev :action IntroduceVariable<c-m>
+
+" nnoremap <space>/ :action SearchEverywhere<c-m>
+" xnoremap <space>/ :action SearchEverywhere<c-m>
+" nnoremap <space>sp :action SearchEverywhere<c-m>
+" xnoremap <space>sp :action SearchEverywhere<c-m>
+map <space>/ <Action>(FindInPath)
+map <space>sp <Action>(FindInPath)
+map <space>. <Action>(GotoFile)
+
+nnoremap <space>cc :action Rerun<c-m>
+nnoremap <space>cr :action Run<c-m>
+nnoremap <space>fl :action IdeaVim.ReloadVimRc.reload <bar> action ExternalSystem.ProjectRefreshAction<c-m>
+nnoremap <space>hrr :action IdeaVim.ReloadVimRc.reload <bar> action ExternalSystem.ProjectRefreshAction<c-m>
+nnoremap <space>ggg :action Git.Menu<c-m>
+map gh <action>(ShowHoverInfo)
+nnoremap <space>ir :action RenameElement<c-m>
+" nnoremap <space>cx :action ActivateRunToolWindow<c-m>
+nnoremap <space>cx :action ActivateProblemsViewToolWindow<c-m>
+nnoremap <space>or :action ActivateTerminalToolWindow<c-m>
+nnoremap <space>qq :action Exit<c-m>
+nnoremap <space>ha :actionlist 
+nnoremap <space>if :action ShowIntentionActions<c-m>
+nnoremap <space>od :action Debug<c-m>
+nnoremap <space>th :action HideAllWindows<c-m>
+nnoremap <c-w>c :close<c-m>
+map <space>bb <action>(Switcher)
+map <space>, <action>(Switcher)
+
+"let g:NERDTreeMapPreview = 'p'
+"" let g:NERDTreeMapPreviewSplit = 'p'
+"let g:NERDTreeMapOpenVSplit = 'v'
+"let g:NERDTreeMapJumpFirstChild = '-'
+let g:NERDTreeMapQuit = '  '
+let g:NERDTreeMapNewDir = 'd'
+let g:NERDTreeMapNewFile = '%'
+let g:NERDTreeMapDelete = 'D'
+
+set relativenumber
+set hlsearch
+set ignorecase
+set idearefactormode=visual
+
+" to see name of action
+" set trackactionids
+
+" conflict with copy char upper line
+" set lookupkeys="<C-Y>" " it is the default in vim :help complete_CTRL-Y
+
+nnoremap Y y$
+nnoremap <Space>y "+y
+nnoremap <Space>Y "+y$
+xnoremap <Space>y "+y
+xnoremap <Space>Y "+y$
+nnoremap <Space>pp "+p
+xnoremap <Space>pp "+p
+inoremap jk <c-[>
+cnoremap jk <c-c>
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap <C-U> <C-U>zz
+nnoremap <C-D> <C-D>zz
+nnoremap gg ggzz
+nnoremap <c-o> <c-o>zz
+nnoremap <c-i> <c-i>zz
+nnoremap <c-]> <c-]>zz
+set colorcolumn=80,120
+nnoremap Q gq
+nnoremap QQ gq_
+xnoremap Q gq
+inoremap <C-U> <C-G>u<C-U>
+inoremap <C-W> <C-G>u<C-W>
+xnoremap * y/\V<C-R>"<CR>
+xnoremap # y?\V<C-R>"<CR>
+nnoremap & :&&<CR>
+" inoremap <C-J> <C-G>u<CR>
+" inoremap <C-M> <C-G>u<CR>
+" inoremap <CR> <C-G>u<CR>
+nnoremap <Space>tl :set rnu!<CR>
+nnoremap <Space>tI :set et!<CR>
+nnoremap <Space>tr :set readonly!<CR>
+nnoremap <Space>tww :set wrap!<CR>
+nnoremap <Space>twl :set linebreak!<CR>
+nnoremap <Space>twi :set breakindent!<CR>
+nnoremap <Space>fs :w<CR>
+nnoremap <Space>fS :w
+nnoremap <Space>fE :split ~/.ideavimrc<CR>
+nnoremap <Space>gv `[v`]
+nnoremap <Space>w <C-W>
+
+nnoremap <Space><Space> :NERDTree<c-m>
+" nnoremap <Space>. :NERDTreeFind<c-m>
+" nnoremap <Space>. :NERDTree<bar>action SpeedSearch<c-m>
+set timeoutlen=10000
